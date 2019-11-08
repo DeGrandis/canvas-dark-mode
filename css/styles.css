@@ -1,0 +1,53 @@
+:root:root {
+    --ic-brand-primary: #282828;
+  --ic-link-color: #282828;
+  --ic-brand-global-nav-bgd: #282828;
+  --ic-brand-global-nav-logo-bgd: #282828;
+  --ic-brand-Login-body-bgd-color: #282828;
+  --ic-brand-Login-body-bgd-shadow-color: #282828;
+}
+
+
+.ic-DashboardCard, .ic-DashboardCard__header_content,
+.ic-DashboardCard__action-container, .item-group-container, .ig-row, .header-bar-outer-container
+, .tray-with-space-for-global-nav, .fLzZc_caGd, .fc-body, .fc-content, .fc-event-container,
+.comm-channel, .grouping, th, .table, .planner-day, .nothingPlannedContainer_hppr
+, .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped {
+    background-color: #282828 !important;
+}
+
+body, .header-bar, .ui-tabs-anchor, .quiz-submission  {
+    background: #1f1f1f !important;
+    color: #C7CDD1 !important;
+}
+
+.module-sequence-footer-content, .ic-app-crumbs, #breadcrumbs {
+    background: #1f1f1f !important;
+}
+
+.ic-Dashboard-header__layout, i{
+    background: #1f1f1f !important;
+    color: #fff !important;
+}
+
+.Button, .btn {
+    background-color: #282828 !important;
+    color: #C7CDD1 !important;
+}
+
+a {
+    color: #fff !important;
+}
+
+.status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
+, .name, h2, .comment, td{
+    color: #C7CDD1 !important;
+}
+
+.ic-sidebar-logo {
+    visibility: hidden;
+}
+
+.fc-today {
+    background-color: #1f1f1f !important;
+}

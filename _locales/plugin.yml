@@ -1,0 +1,42 @@
+name: DocumentPlung
+main: com.degrandis.plugin.DocumentPlung
+version: 1.0
+author: Rob D
+description: lit
+commands:
+  setname:
+    description: This is a demo command
+    usage: 
+  setteacher:
+    description: This is a demo command
+    usage: 
+  setclass:
+    description: This is a demo command
+    usage: 
+  setdate:
+    description: This is a demo command
+    usage: 
+  settitle:
+    description: This is a demo command
+    usage: 
+  showdoc:
+    description: This is a demo command
+    usage: 
+  sentence:
+    description: This is a demo command
+    usage: 
+  save:
+    description: This is a demo command
+    usage: 
+  setdocname:
+    description: This is a demo command
+    usage: 
+  showfulldoc:
+    description: This is a demo command
+    usage:
+  deleteparagraph:
+    description: This is a demo command
+    usage:
+  paragraphs:
+    description: This is a demo command
+    usage:
