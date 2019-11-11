@@ -1,8 +1,8 @@
 {
-  "name": "Canvas",
+  "name": "Canvas Dark Mode",
   "version": "1.0.0",
   "manifest_version": 2,
-  "description": "This plugin adds the RSS button back to Youtube.",
+  "description": "Dark Mode for Canvas.",
   "homepage_url": "https://degrandis.github.io/Youtube-rss-chrome-plugin/",
   "icons": {
     "16": "icons/icon16.png",
