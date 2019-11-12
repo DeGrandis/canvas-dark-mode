@@ -3,7 +3,7 @@
 This extension adds a dark mode for canvas.
 
 ## Installation
-This extension is available on the [Chrome Web Store]().
+This extension is available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/canvas-dark-mode/jbfgmfpakhabhhpefblmehnadjjkadna?utm_source=chrome-ntp-icon).
 
 ## Screenshots
 <p align="center">
