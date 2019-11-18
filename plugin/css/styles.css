@@ -50,3 +50,7 @@ a {
 .fc-today {
     background-color: #1f1f1f !important;
 }
+
+.ic-notification__content {
+    background: none !important;
+}
