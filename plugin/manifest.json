@@ -20,7 +20,7 @@
     {
       "matches": [
         "https://canvas.vt.edu/*",
-        "https://*.instructure.com*"
+        "https://*.instructure.com/*"
       ],
       "css":[
           "css/styles.css"
