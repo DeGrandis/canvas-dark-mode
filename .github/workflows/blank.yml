@@ -29,6 +29,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Zip Plugin
-        run: zip -r extension.zip /plugin
+        run: zip -r extension.zip ./plugin
       
 
