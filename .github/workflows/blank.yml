@@ -23,7 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: CD
-        run: cd $GITHUB_WORKSPACE
+        run: cd $GITHUB_WORKSPACE && ls
         
         
 
