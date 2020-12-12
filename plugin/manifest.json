@@ -13,12 +13,14 @@
   "default_locale": "en",
   "permissions": [
       "webNavigation",
-      "https://canvas.vt.edu/*"
+      "https://canvas.vt.edu/*",
+      "https://*.instructure.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://canvas.vt.edu/*"
+        "https://canvas.vt.edu/*",
+        "https://*.instructure.com/*"
       ],
       "css":[
           "css/styles.css"
