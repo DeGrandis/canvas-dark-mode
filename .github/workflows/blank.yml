@@ -1,12 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build & Deploy
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,13 +20,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: CD
-        run: cd $GITHUB_WORKSPACE && ls
-        
+      - name: Find Directory
+        run: cd $GITHUB_WORKSPACE
         
 
-      # Runs a single command using the runners shell
       - name: Zip Plugin
-        run: zip -r extension.zip ./plugin && ls
-      
+        run: zip -r extension.zip ./plugin
+        
+      - name: Upload to Chrome Webstore
+        uses: trmcnvn/chrome-addon@v2
+        with:
+          # ID of the extension that you are updating
+          extension: jbfgmfpakhabhhpefblmehnadjjkadna
+          # Path to a .zip of your addon
+          zip: ./extension.zip
+          # Google OAuth2 client id
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
 
