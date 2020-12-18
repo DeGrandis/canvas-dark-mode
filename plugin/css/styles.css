@@ -15,12 +15,12 @@
     background-color: #282828 !important;
 }
 
-body, .header-bar, .ui-tabs-anchor, .quiz-submission  {
+body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input {
     background: #1f1f1f !important;
     color: #C7CDD1 !important;
 }
 
-.module-sequence-footer-content, .ic-app-crumbs, #breadcrumbs {
+.module-sequence-footer-content, .ic-app-crumbs, #breadcrumbs, .course-list-unpublished-course-row {
     background: #1f1f1f !important;
 }
 
@@ -39,7 +39,7 @@ a {
 }
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
-, .name, h2, .comment, td{
+, .name, h2, .comment, td, .score_value{
     color: #C7CDD1 !important;
 }
 
@@ -51,6 +51,31 @@ a {
     background-color: #1f1f1f !important;
 }
 
-.ic-notification__content {
+.ic-notification__content, table.summary td, #syllabus tr.date.date_passed td{
     background: none !important;
+}
+
+#minical {
+    background-color: #1f1f1f !important;
+}
+
+.fc-widget-content {
+    border: 1px solid #4d4d4d !important;
+}
+
+#context-list-holder {
+    background-color: #1f1f1f !important;
+}
+
+
+.course-list-table .course-list-table-row:hover, .ef-item-row:hover, tr:hover {
+    background-color: #4b4b4b !important;
+}
+
+.mini_calendar .day.today {
+    background-color: #4d4d4d  !important;
+}
+
+.ic-Table.ic-Table--striped tbody tr:nth-child(odd) {
+    background-color: #1f1f1f !important;
 }
