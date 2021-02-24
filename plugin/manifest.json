@@ -12,16 +12,22 @@
   },
   "default_locale": "en",
   "permissions": [
-      "https://canvas.vt.edu/*",
       "https://*.instructure.com/*",
-      "https://canvas.oregonstate.edu/*"
+      "https://canvas.vt.edu/*",
+      "https://canvas.oregonstate.edu/*",
+      "https://canvas.uw.edu/*",
+      "https://canvas.upenn.edu/*",
+      "https://canvas.du.edu/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://canvas.vt.edu/*",
         "https://*.instructure.com/*",
-        "https://canvas.oregonstate.edu/*"
+        "https://canvas.vt.edu/*",
+        "https://canvas.oregonstate.edu/*",
+        "https://canvas.uw.edu/*",
+        "https://canvas.upenn.edu/*",
+        "https://canvas.du.edu/*"
       ],
       "css":[
           "css/styles.css"
