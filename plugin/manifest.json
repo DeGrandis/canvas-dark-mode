@@ -13,13 +13,15 @@
   "default_locale": "en",
   "permissions": [
       "https://canvas.vt.edu/*",
-      "https://*.instructure.com/*"
+      "https://*.instructure.com/*",
+      "https://canvas.oregonstate.edu/*"
   ],
   "content_scripts": [
     {
       "matches": [
         "https://canvas.vt.edu/*",
-        "https://*.instructure.com/*"
+        "https://*.instructure.com/*",
+        "https://canvas.oregonstate.edu/*"
       ],
       "css":[
           "css/styles.css"
