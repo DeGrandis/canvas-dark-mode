@@ -22,7 +22,8 @@
       "https://bcourses.berkeley.edu/*",
       "https://canvas.uchicago.edu/*",
       "https://canvas.tufts.edu/*",
-      "https://webcourses.ucf.edu/*"
+      "https://webcourses.ucf.edu/*",
+      "https://canvas.harvard.edu/*"
   ],
   "content_scripts": [
     {
@@ -37,7 +38,8 @@
         "https://bcourses.berkeley.edu/*",
         "https://canvas.uchicago.edu/*",
         "https://canvas.tufts.edu/*",
-        "https://webcourses.ucf.edu/*"
+        "https://webcourses.ucf.edu/*",
+        "https://canvas.harvard.edu/*"
       ],
       "css":[
           "css/styles.css"
