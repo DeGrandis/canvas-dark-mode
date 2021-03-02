@@ -7,7 +7,7 @@
   --ic-brand-Login-body-bgd-shadow-color: #282828;
 }
 
-.ic-DashboardCard, .ic-DashboardCard__header_content,
+.ic-DashboardCard, .ic-DashboardCard__header_content, .header,
 .ic-DashboardCard__action-container, .item-group-container, .ig-row, .header-bar-outer-container
 , .tray-with-space-for-global-nav, .fLzZc_caGd, .fc-body, .fc-content, .fc-event-container,
 .comm-channel, .grouping, th, .table, .planner-day, .nothingPlannedContainer_hppr
@@ -72,10 +72,22 @@ a {
     background-color: #4b4b4b !important;
 }
 
-.mini_calendar .day.today {
+.mini_calendar .day.today  {
     background-color: #4d4d4d  !important;
 }
 
 .ic-Table.ic-Table--striped tbody tr:nth-child(odd) {
     background-color: #1f1f1f !important;
+}
+
+.ic-Table {
+    color: white !important;
+}
+
+.question_points_holder {
+    color: none !important;
+}
+
+#questions.assessing, .question {
+    background: none !important;
 }

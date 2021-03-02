@@ -1,6 +1,6 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "manifest_version": 2,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
@@ -34,7 +34,8 @@
       "https://canvas.tufts.edu/*",
       "https://webcourses.ucf.edu/*",
       "https://canvas.harvard.edu/*",
-      "https://canvas.auckland.ac.nz/*"
+      "https://canvas.auckland.ac.nz/*",
+      "https://learn.vccs.edu/*"
   ],
   "content_scripts": [
     {
@@ -51,7 +52,8 @@
         "https://canvas.tufts.edu/*",
         "https://webcourses.ucf.edu/*",
         "https://canvas.harvard.edu/*",
-        "https://canvas.auckland.ac.nz/*"
+        "https://canvas.auckland.ac.nz/*",
+        "https://learn.vccs.edu/*"
       ],
       "css":[
           "css/styles.css"
