@@ -35,7 +35,8 @@
       "https://webcourses.ucf.edu/*",
       "https://canvas.harvard.edu/*",
       "https://canvas.auckland.ac.nz/*",
-      "https://learn.vccs.edu/*"
+      "https://learn.vccs.edu/*",
+      "https://cursos.canvas.uc.cl/*"
   ],
   "content_scripts": [
     {
@@ -53,7 +54,8 @@
         "https://webcourses.ucf.edu/*",
         "https://canvas.harvard.edu/*",
         "https://canvas.auckland.ac.nz/*",
-        "https://learn.vccs.edu/*"
+        "https://learn.vccs.edu/*",
+        "https://cursos.canvas.uc.cl/*"
       ],
       "css":[
           "css/styles.css"
