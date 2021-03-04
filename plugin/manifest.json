@@ -36,7 +36,8 @@
       "https://canvas.harvard.edu/*",
       "https://canvas.auckland.ac.nz/*",
       "https://learn.vccs.edu/*",
-      "https://cursos.canvas.uc.cl/*"
+      "https://cursos.canvas.uc.cl/*",
+      "https://canvas.unk.edu/*"
   ],
   "content_scripts": [
     {
@@ -55,7 +56,8 @@
         "https://canvas.harvard.edu/*",
         "https://canvas.auckland.ac.nz/*",
         "https://learn.vccs.edu/*",
-        "https://cursos.canvas.uc.cl/*"
+        "https://cursos.canvas.uc.cl/*",
+        "https://canvas.unk.edu/*"
       ],
       "css":[
           "css/styles.css"
