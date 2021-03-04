@@ -37,6 +37,7 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
 
 a {
     color: #fff !important;
+    text-decoration: none !important;
 }
 
 
