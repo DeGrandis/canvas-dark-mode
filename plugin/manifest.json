@@ -42,7 +42,9 @@
       "https://canvas.fau.edu/*",
       "https://canvas.ubc.ca/*",
       "https://canvas.ucsd.edu/*",
-      "https://canvas.pointloma.edu/*"
+      "https://canvas.pointloma.edu/*",
+      "https://cursos.canvas.uc.cl/*",
+      "https://canvas.unk.edu/*"
   ],
   "content_scripts": [
     {
@@ -67,7 +69,9 @@
         "https://canvas.fau.edu/*",
         "https://canvas.ubc.ca/*",
         "https://canvas.ucsd.edu/*",
-        "https://canvas.pointloma.edu/*"
+        "https://canvas.pointloma.edu/*",
+        "https://cursos.canvas.uc.cl/*",
+        "https://canvas.unk.edu/*"
       ],
       "css":[
           "css/styles.css"

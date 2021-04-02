@@ -5,13 +5,14 @@
   --ic-brand-global-nav-logo-bgd: #282828;
   --ic-brand-Login-body-bgd-color: #282828;
   --ic-brand-Login-body-bgd-shadow-color: #282828;
+  --ic-brand-global-nav-menu-item__text-color: #C7CDD1;
 }
 
 .ic-DashboardCard, .ic-DashboardCard__header_content, .header,
 .ic-DashboardCard__action-container, .item-group-container, .ig-row, .header-bar-outer-container
 , .tray-with-space-for-global-nav, .fLzZc_caGd, .fc-body, .fc-content, .fc-event-container,
 .comm-channel, .grouping, th, .table, .planner-day, .nothingPlannedContainer_hppr
-, .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped {
+, .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped, .ic-flash-error  {
     background-color: #282828 !important;
 }
 
@@ -36,7 +37,9 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
 
 a {
     color: #fff !important;
+    text-decoration: none !important;
 }
+
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
 , .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
