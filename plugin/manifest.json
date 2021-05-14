@@ -1,6 +1,6 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "manifest_version": 2,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
@@ -18,7 +18,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "test"
+    "default_title": "Canvas Dark Mode"
   },
   "default_locale": "en",
   "permissions": [
@@ -44,7 +44,19 @@
       "https://canvas.ucsd.edu/*",
       "https://canvas.pointloma.edu/*",
       "https://cursos.canvas.uc.cl/*",
-      "https://canvas.unk.edu/*"
+      "https://canvas.unk.edu/*",
+      "https://canvas.emory.edu/*",
+      "https://canvas.usask.ca/*",
+      "https://canvas.colorado.edu/*",
+      "https://canvas.northwestern.edu/*",
+      "https://uclearn.canberra.edu.au/*",
+      "https://canvas.dccc.edu/*",
+      "https://cursos.tecmilenio.mx/*",
+      "https://elearn.ucr.edu/*",
+      "https://canvas.tamu.edu/*",
+      "https://canvas.wpi.edu/*",
+      "https://ilearn.laccd.edu/*",
+      "https://canvas.education.lu.se/*"
   ],
   "content_scripts": [
     {
@@ -71,7 +83,19 @@
         "https://canvas.ucsd.edu/*",
         "https://canvas.pointloma.edu/*",
         "https://cursos.canvas.uc.cl/*",
-        "https://canvas.unk.edu/*"
+        "https://canvas.unk.edu/*",
+        "https://canvas.emory.edu/*",
+        "https://canvas.usask.ca/*",
+        "https://canvas.colorado.edu/*",
+        "https://canvas.northwestern.edu/*",
+        "https://uclearn.canberra.edu.au/*",
+        "https://canvas.dccc.edu/*",
+        "https://cursos.tecmilenio.mx/*",
+        "https://elearn.ucr.edu/*",
+        "https://canvas.tamu.edu/*",
+        "https://canvas.wpi.edu/*",
+        "https://ilearn.laccd.edu/*",
+        "https://canvas.education.lu.se/*"
       ],
       "css":[
           "css/styles.css"
