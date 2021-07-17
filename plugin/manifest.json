@@ -22,6 +22,8 @@
   },
   "default_locale": "en",
   "permissions": [
+      "https://canvas.saddleback.edu/*",
+      "https://canvas.ucsc.edu/*",
       "https://*.instructure.com/*",
       "https://canvas.vt.edu/*",
       "https://canvas.oregonstate.edu/*",
