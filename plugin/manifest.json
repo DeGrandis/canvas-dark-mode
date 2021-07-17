@@ -1,7 +1,7 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.0.9",
-  "manifest_version": 2,
+  "version": "1.1.0",
+  "manifest_version": 3,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
   "icons": {
@@ -10,7 +10,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -21,45 +21,7 @@
     "default_title": "Canvas Dark Mode"
   },
   "default_locale": "en",
-  "permissions": [
-      "https://canvas.saddleback.edu/*",
-      "https://canvas.ucsc.edu/*",
-      "https://*.instructure.com/*",
-      "https://canvas.vt.edu/*",
-      "https://canvas.oregonstate.edu/*",
-      "https://canvas.uw.edu/*",
-      "https://canvas.upenn.edu/*",
-      "https://canvas.du.edu/*",
-      "https://canvas.morainevalley.edu/*",
-      "https://bcourses.berkeley.edu/*",
-      "https://canvas.uchicago.edu/*",
-      "https://canvas.tufts.edu/*",
-      "https://webcourses.ucf.edu/*",
-      "https://canvas.harvard.edu/*",
-      "https://canvas.auckland.ac.nz/*",
-      "https://learn.vccs.edu/*",
-      "https://canvas.sfu.ca/*",
-      "https://canvas.allenisd.org/*",
-      "https://canvas.asu.edu/*",
-      "https://canvas.fau.edu/*",
-      "https://canvas.ubc.ca/*",
-      "https://canvas.ucsd.edu/*",
-      "https://canvas.pointloma.edu/*",
-      "https://cursos.canvas.uc.cl/*",
-      "https://canvas.unk.edu/*",
-      "https://canvas.emory.edu/*",
-      "https://canvas.usask.ca/*",
-      "https://canvas.colorado.edu/*",
-      "https://canvas.northwestern.edu/*",
-      "https://uclearn.canberra.edu.au/*",
-      "https://canvas.dccc.edu/*",
-      "https://cursos.tecmilenio.mx/*",
-      "https://elearn.ucr.edu/*",
-      "https://canvas.tamu.edu/*",
-      "https://canvas.wpi.edu/*",
-      "https://ilearn.laccd.edu/*",
-      "https://canvas.education.lu.se/*"
-  ],
+
   "content_scripts": [
     {
       "matches": [
@@ -97,7 +59,24 @@
         "https://canvas.tamu.edu/*",
         "https://canvas.wpi.edu/*",
         "https://ilearn.laccd.edu/*",
-        "https://canvas.education.lu.se/*"
+        "https://canvas.education.lu.se/*",
+        "https://online.valenciacollege.edu/*",
+        "https://canvas.cwu.edu/*",
+        "https://canvas.eee.uci.edu/*",
+        "https://canvas.vcom.edu/*",
+        "https://canvas.eee.uci.edu/*",
+        "https://canvas.unf.edu/*",
+        "https://canvas.longwood.edu/*",
+        "https://canvas.ucsc.edu/*",
+        "https://canvas.ivc.edu/*",
+        "https://unr.canvaslms.com/*",
+        "https://canvas.westcoastuniversity.edu/*",
+        "https://canvas.ou.edu/*",
+        "https://learning.flatironschool.com/*",
+        "https://canvas.pieas.edu.pk/*",
+        "https://canvas.endeavour.sa.edu.au/*",
+        "https://canvas.saddleback.edu/*",
+        "https://canvas.ucsc.edu/*"
       ],
       "css":[
           "css/styles.css"
