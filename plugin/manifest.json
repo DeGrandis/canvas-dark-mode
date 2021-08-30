@@ -1,6 +1,6 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "manifest_version": 3,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
@@ -64,7 +64,6 @@
         "https://canvas.cwu.edu/*",
         "https://canvas.eee.uci.edu/*",
         "https://canvas.vcom.edu/*",
-        "https://canvas.eee.uci.edu/*",
         "https://canvas.unf.edu/*",
         "https://canvas.longwood.edu/*",
         "https://canvas.ucsc.edu/*",
@@ -76,7 +75,24 @@
         "https://canvas.pieas.edu.pk/*",
         "https://canvas.endeavour.sa.edu.au/*",
         "https://canvas.saddleback.edu/*",
-        "https://canvas.ucsc.edu/*"
+        "https://canvas.brown.edu/*",
+        "https://canvas.txstate.edu/*",
+        "https://canvas.illinois.edu/*",
+        "https://canvas.wisc.edu/*",
+        "https://canvas.education.tas.gov.au/*",
+        "https://myuni.adelaide.edu.au/*",
+        "https://canvas.cpp.edu/*",
+        "https://canvas.uts.edu.au/*",
+        "https://canvas.stanford.edu/*",
+        "https://canvas.collierschools.com/*",
+        "https://canvas.lms.unimelb.edu.au/*",
+        "https://canvas.sydney.edu.au/*",
+        "https://canvas.ku.edu/*",
+        "https://canvas.unl.edu/*",
+        "https://canvas.liberty.edu/*",
+        "https://canvas.gu.se/*",
+        "https://online.seminolestate.edu/*",
+        "https://canvas.umn.edu/*"
       ],
       "css":[
           "css/styles.css"
