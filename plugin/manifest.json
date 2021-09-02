@@ -92,7 +92,8 @@
         "https://canvas.liberty.edu/*",
         "https://canvas.gu.se/*",
         "https://online.seminolestate.edu/*",
-        "https://canvas.umn.edu/*"
+        "https://canvas.umn.edu/*",
+        "https://catcourses.ucmerced.edu/*"
       ],
       "css":[
           "css/styles.css"
