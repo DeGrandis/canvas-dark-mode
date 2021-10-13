@@ -12,7 +12,9 @@
 .ic-DashboardCard__action-container, .item-group-container, .ig-row, .header-bar-outer-container
 , .tray-with-space-for-global-nav, .fLzZc_caGd, .fc-body, .fc-content, .fc-event-container,
 .comm-channel, .grouping, th, .table, .planner-day, .nothingPlannedContainer_hppr
-, .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped, .ic-flash-error  {
+, .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped, .ic-flash-error,
+span[role=dialog], span[role=dialog] > div, .agenda-wrapper, .agenda-day, .agenda-event__container,
+.event-details {
     background-color: #282828 !important;
 }
 
@@ -62,7 +64,7 @@ a {
     background-color: #1f1f1f !important;
 }
 
-.fc-widget-content {
+.fc-widget-content, .agenda-day {
     border: 1px solid #4d4d4d !important;
 }
 
@@ -93,4 +95,54 @@ a {
 
 #questions.assessing, .question {
     background: none !important;
+}
+
+.pinned-discussions-v2__wrapper, .unpinned-discussions-v2__wrapper, .ic-discussion-row,
+.message-list .messages>li {
+    background: #1f1f1f !important;
+    color: #C7CDD1 !important;
+}
+
+.toolbarView .headerBar, .discussion-reply-box, .conversations .panel {
+    background: #4b4b4b  !important;
+}
+
+.discussion_entry {
+    background: #1f1f1f !important;
+}
+
+.ic-RichContentEditor > div,
+.tox:not(.tox-tinymce-inline) .tox-editor-header,
+.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary,
+.tox .tox-menubar, .tox .tox-menu {
+    background-color: #1a1a1a !important;
+    color: #C7CDD1 !important;
+}
+
+.tox .tox-tbtn, .tox .tox-mbtn,
+.tox .tox-collection__item, .tox .tox-collection--list .tox-collection__item--active {
+    color: #C7CDD1 !important;
+}
+
+.tox .tox-edit-area__iframe,
+.tox .tox-tbtn--active, .tox .tox-mbtn--active,
+.tox .tox-collection--list .tox-collection__item--enabled,
+.tox .tox-split-button .tox-tbtn.tox-split-button__chevron {
+    background-color: #7b7b7b !important;
+    color: white !important;
+}
+
+.tox .tox-tbtn:hover, .tox .tox-split-button:hover, .tox .tox-tbtn.tox-tbtn--enabled:hover,
+.tox .tox-split-button .tox-tbtn.tox-split-button__chevron:hover {
+    border-color: #7b7b7b !important;
+    background-color: #7b7b7b !important;
+    color: white !important;
+}
+
+.tox .tox-tbtn svg {
+    fill: #C7CDD1 !important;
+}
+
+.message-list .date, .ToDoSidebarItem__Info > ul > li {
+    color: #7b7b7b !important;
 }
