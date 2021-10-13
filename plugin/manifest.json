@@ -130,7 +130,9 @@
         "https://lms.pps.net/*",
         "https://uzemoys.ogu.edu.tr/*",
         "https://canvas.santarosa.edu/*",
-        "https://bcportalguard.butte.edu/*"
+        "https://bcportalguard.butte.edu/*",
+        "https://*.canvas.vu.nl/*",
+        "https://*.canvas.login.vu.nl/*"
       ],
       "css":[
           "css/styles.css"
