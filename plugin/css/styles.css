@@ -1,11 +1,15 @@
 :root:root {
-    --ic-brand-primary: #282828;
+  --ic-brand-primary: #282828;
   --ic-link-color: #282828;
   --ic-brand-global-nav-bgd: #282828;
   --ic-brand-global-nav-logo-bgd: #282828;
   --ic-brand-Login-body-bgd-color: #282828;
   --ic-brand-Login-body-bgd-shadow-color: #282828;
   --ic-brand-global-nav-menu-item__text-color: #C7CDD1;
+  --ic-brand-global-nav-menu-item__text-color--active: #fff;
+  --ic-brand-global-nav-ic-icon-svg-fill--active: #fff;
+  --ic-brand-font-color-dark-lightened-15: #C7CDD1;
+  --eHiXd-linkColor: #fff;
 }
 
 .ic-DashboardCard, .ic-DashboardCard__header_content, .header,
@@ -25,6 +29,10 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
 
 .module-sequence-footer-content, .ic-app-crumbs, #breadcrumbs, .course-list-unpublished-course-row {
     background: #1f1f1f !important;
+}
+
+.ic-app-header__menu-list-item.ic-app-header__menu-list-item--active .ic-app-header__menu-list-link{
+    background: #333 !important;
 }
 
 .ic-Dashboard-header__layout, i{
@@ -50,6 +58,19 @@ a {
 
 .ic-sidebar-logo {
     visibility: hidden;
+}
+
+.Day-styles__root {
+    color: #fff !important;
+}
+
+.EmptyDays-styles__root {
+    background-color: #282828 !important;
+    color: #fff !important;
+}
+
+.PlannerItem-styles__root {
+    color: #C7CDD1 !important;
 }
 
 .fc-today {
@@ -87,6 +108,10 @@ a {
 
 .ic-Table {
     color: white !important;
+}
+
+.navigation-tray-container button:active::before {
+    border-color: #4d4d4d !important
 }
 
 .question_points_holder {
