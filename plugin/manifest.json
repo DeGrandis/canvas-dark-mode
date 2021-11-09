@@ -132,7 +132,8 @@
         "https://canvas.santarosa.edu/*",
         "https://bcportalguard.butte.edu/*",
         "https://*.canvas.vu.nl/*",
-        "https://*.canvas.login.vu.nl/*"
+        "https://*.canvas.login.vu.nl/*",
+        "https://onlinestudy.york.ac.uk/*"
       ],
       "css":[
           "css/styles.css"
