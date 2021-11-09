@@ -6,8 +6,8 @@
   --ic-brand-Login-body-bgd-color: #282828;
   --ic-brand-Login-body-bgd-shadow-color: #282828;
   --ic-brand-global-nav-menu-item__text-color: #C7CDD1;
-  --ic-brand-global-nav-menu-item__text-color--active: #fff;
-  --ic-brand-global-nav-ic-icon-svg-fill--active: #fff;
+  --ic-brand-global-nav-menu-item__text-color--active: #282828;
+  --ic-brand-global-nav-ic-icon-svg-fill--active: #282828;
   --ic-brand-font-color-dark-lightened-15: #C7CDD1;
   --eHiXd-linkColor: #fff;
 }
@@ -25,6 +25,7 @@ span[role=dialog], span[role=dialog] > div, .agenda-wrapper, .agenda-day, .agend
 body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input {
     background: #1f1f1f !important;
     color: #C7CDD1 !important;
+    text-shadow: none;
 }
 
 .module-sequence-footer-content, .ic-app-crumbs, #breadcrumbs, .course-list-unpublished-course-row {
@@ -50,9 +51,8 @@ a {
     text-decoration: none !important;
 }
 
-
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
-, .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
+, .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label, .enRcg_bGBk{
     color: #C7CDD1 !important;
 }
 
@@ -170,4 +170,8 @@ a {
 
 .message-list .date, .ToDoSidebarItem__Info > ul > li {
     color: #7b7b7b !important;
+}
+
+.user_content div {
+    background: #1f1f1f !important;
 }
