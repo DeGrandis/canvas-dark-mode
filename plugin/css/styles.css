@@ -51,7 +51,6 @@ a {
     text-decoration: none !important;
 }
 
-
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
 , .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label, .enRcg_bGBk{
     color: #C7CDD1 !important;
@@ -171,4 +170,8 @@ a {
 
 .message-list .date, .ToDoSidebarItem__Info > ul > li {
     color: #7b7b7b !important;
+}
+
+.user_content div {
+    background: #1f1f1f !important;
 }
