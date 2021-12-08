@@ -18,11 +18,21 @@
 .comm-channel, .grouping, th, .table, .planner-day, .nothingPlannedContainer_hppr
 , .comments, .roster-tab, .rosterUser, .syllabus_assignment, tbody, .day_date, .table, .table-striped, .ic-flash-error,
 span[role=dialog], span[role=dialog] > div, .agenda-wrapper, .agenda-day, .agenda-event__container,
-.event-details {
+.event-details, .rubric_title, .content_box {
     background-color: #282828 !important;
 }
 
-body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input {
+.react-rubric tr, .react-rubric th {
+    background-color: #282828 !important;
+    color: #888 !important;
+}
+
+.react-rubric td {
+    background-color: #282828 !important;
+    color: #888 !important;
+}
+
+body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input, .ic-DashboardCard__box__header {
     background: #1f1f1f !important;
     color: #C7CDD1 !important;
 }
@@ -35,7 +45,7 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
     background: #333 !important;
 }
 
-.ic-Dashboard-header__layout, i{
+.ic-Dashboard-header__layout, div.comment {
     background: #1f1f1f !important;
     color: #fff !important;
 }
