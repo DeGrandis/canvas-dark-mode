@@ -45,7 +45,7 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
     background: #333 !important;
 }
 
-.ic-Dashboard-header__layout, i{
+.ic-Dashboard-header__layout, div.comment {
     background: #1f1f1f !important;
     color: #fff !important;
 }
