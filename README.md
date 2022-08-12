@@ -1,11 +1,13 @@
 
 # Dark Mode for Canvas (NUS VERSION)
-This extension adds a dark mode for canvas.
+This extension adds a dark mode for canvas. 
 
-## Installation
 The orginal extension is available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/canvas-dark-mode/jbfgmfpakhabhhpefblmehnadjjkadna?utm_source=chrome-ntp-icon). However, due to delays in releasing in that version with support for NUS, a fork has been created to support NUS. 
 
+
 **This copy will be deleted once the official version is updated - but my retinas can't wait for that**
+
+## Installation
 
 ### Steps to install the NUS Version:
 
