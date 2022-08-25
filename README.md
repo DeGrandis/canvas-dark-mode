@@ -22,11 +22,17 @@ If you would like to fix/change any of the styles, your expertise is welcome!  T
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Open `chrome://extensions/` on your browser
 4. Click `Load Unpacked`
-5. Make your changes, verify they work.
+5. Make your changes, verify they work. (remember, other schools use this, not just yours!)
 6. Push to your fork and [submit a pull request](https://github.com/DeGrandis/canvas-dark-mode/compare)
 7. Wait for your code to be reviewed.
 
 I will be pushing the updated version to the Chrome Store often.
+
+## Donations
+Donations are appreciated but not necessary.  Thank you, if you choose to do so.  
+<p align="left">
+  <img src="https://raw.githubusercontent.com/DeGrandis/canvas-dark-mode/master/screenshots/Bitcoin_QR_Code.PNG">
+</p>
 
 ## Additional Resources
 
