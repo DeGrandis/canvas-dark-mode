@@ -50,6 +50,7 @@
         "https://canvas.unk.edu/*",
         "https://canvas.emory.edu/*",
         "https://canvas.usask.ca/*",
+        "https://lms.neumont.edu/*,
         "https://canvas.colorado.edu/*",
         "https://canvas.northwestern.edu/*",
         "https://uclearn.canberra.edu.au/*",
@@ -166,6 +167,7 @@
         "https://canvas.letovo.ru/*",
         "https://learn.usc.edu.au/*",
         "https://bruinlearn.ucla.edu/*"
+        "https://canvas.newcastle.edu.au/*"
       ],
       "css":[
           "css/styles.css"
