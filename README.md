@@ -31,7 +31,7 @@ I will be pushing the updated version to the Chrome Store often.
 ## Donations
 Donations are appreciated but not necessary.  Thank you, if you choose to do so.  
 <p align="left">
-  <img src="https://raw.githubusercontent.com/DeGrandis/canvas-dark-mode/master/screenshots/Bitcoin_QR_Code.PNG">
+  <img src="https://raw.githubusercontent.com/DeGrandis/canvas-dark-mode/master/screenshots/Bitcoin_QR_Code.png">
 </p>
 
 ## Additional Resources
