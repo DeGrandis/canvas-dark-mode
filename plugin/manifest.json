@@ -166,7 +166,8 @@
         "https://canvas.hu.nl/*",
         "https://canvas.letovo.ru/*",
         "https://learn.usc.edu.au/*",
-        "https://canvas.newcastle.edu.au/"
+        "https://bruinlearn.ucla.edu/*"
+        "https://canvas.newcastle.edu.au/*"
       ],
       "css":[
           "css/styles.css"
