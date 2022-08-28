@@ -25,6 +25,7 @@
   "content_scripts": [
     {
       "matches": [
+        "https://canvas.msstate.edu/*",
         "https://*.instructure.com/*",
         "https://canvas.vt.edu/*",
         "https://canvas.oregonstate.edu/*",
