@@ -25,7 +25,6 @@
   "content_scripts": [
     {
       "matches": [
-        "https://canvas.msstate.edu/*",
         "https://*.instructure.com/*",
         "https://canvas.vt.edu/*",
         "https://canvas.oregonstate.edu/*",
@@ -222,6 +221,7 @@
         "https://canvas.park.edu/*",
         "https://learn.irvingisd.net/*",
         "https://courses.ecu.edu.au/*"
+        "https://canvas.msstate.edu/*",
       ],
       "css":[
           "css/styles.css"
