@@ -185,3 +185,8 @@ a {
 code{
     color: lightcyan !important;
 }
+
+.answer_label pre{
+    background-color: #5d5d5d !important;
+    border: none !important;
+}
