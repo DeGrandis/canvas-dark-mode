@@ -9,7 +9,11 @@
   --ic-brand-global-nav-menu-item__text-color--active: #fff;
   --ic-brand-global-nav-ic-icon-svg-fill--active: #fff;
   --ic-brand-font-color-dark-lightened-15: #C7CDD1;
+  --ic-brand-font-color-dark: #969b9e;
   --eHiXd-linkColor: #fff;
+  
+  --enRcg-secondaryColor: #fff !important;
+  --jpyTq-color: rgb(209, 209, 209) !important;
 }
 
 .ic-DashboardCard, .ic-DashboardCard__header_content, .header,
@@ -189,4 +193,16 @@ code{
 .answer_label pre{
     background-color: #5d5d5d !important;
     border: none !important;
+}
+
+#calendar-list-holder, #other-calendars-list-holder, #undated-events {
+    background-color: var(--ic-brand-primary) !important;
+}
+
+.context_list_context:hover {
+    background: #1f1f1f !important;
+}
+
+.message-list .subject {
+    color: var(--ic-brand-font-color-dark-lightened-15) !important;
 }
