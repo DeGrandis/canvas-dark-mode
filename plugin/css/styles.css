@@ -190,3 +190,18 @@ code{
     background-color: #5d5d5d !important;
     border: none !important;
 }
+
+.assignment-name {
+    background-color: white !important;
+    color: black !important;
+}
+
+.student-name {
+    background-color: white !important;
+    color: black !important;
+}
+
+.student-grades-link {
+    background-color: white !important;
+    color: black !important;
+}
