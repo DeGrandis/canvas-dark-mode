@@ -190,3 +190,11 @@ code{
     background-color: #5d5d5d !important;
     border: none !important;
 }
+
+.assignment-student-header {
+    background-color: #1f1f1f !important;
+}
+
+#assignmens-student-footer {
+    background-color: #1f1f1f !important;
+}
