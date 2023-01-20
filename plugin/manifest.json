@@ -223,7 +223,8 @@
         "https://courses.ecu.edu.au/*",
         "https://canvas.msstate.edu/*",
         "https://canvas.kdg.be/*",
-        "https://canvas.moravian.edu/*"
+        "https://canvas.moravian.edu/*",
+        "https://canvas-prod.ccsnh.edu/*"
       ],
       "css":[
           "css/styles.css"
