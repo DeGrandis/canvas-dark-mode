@@ -181,3 +181,27 @@ a {
 .message-list .date, .ToDoSidebarItem__Info > ul > li {
     color: #7b7b7b !important;
 }
+
+code{
+    color: lightcyan !important;
+}
+
+.answer_label pre{
+    background-color: #5d5d5d !important;
+    border: none !important;
+}
+
+.assignment-name {
+    background-color: white !important;
+    color: black !important;
+}
+
+.student-name {
+    background-color: white !important;
+    color: black !important;
+}
+
+.student-grades-link {
+    background-color: white !important;
+    color: black !important;
+}

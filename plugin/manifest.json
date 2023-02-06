@@ -222,7 +222,11 @@
         "https://learn.irvingisd.net/*",
         "https://courses.ecu.edu.au/*",
         "https://canvas.msstate.edu/*",
-        "https://canvas.stir.ac.uk/*"
+        "https://canvas.stir.ac.uk/*",
+        "https://canvas.kdg.be/*",
+        "https://canvas.liverpool.ac.uk/*",
+        "https://canvas.moravian.edu/*",
+        "https://canvas-prod.ccsnh.edu/*"
       ],
       "css":[
           "css/styles.css"
