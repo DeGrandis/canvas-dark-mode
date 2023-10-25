@@ -25,7 +25,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://lms.griffith.edu.au",
+        "https://lms.griffith.edu.au/*",
         "https://*.instructure.com/*",
         "https://canvas.vt.edu/*",
         "https://canvas.oregonstate.edu/*",
