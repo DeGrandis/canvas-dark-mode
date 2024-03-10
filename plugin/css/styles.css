@@ -61,7 +61,7 @@ a {
 }
 
 .display_question [style] {
-    color: white !important;
+    color: #fff !important;
 }
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
