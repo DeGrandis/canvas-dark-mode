@@ -60,6 +60,9 @@ a {
     text-decoration: none !important;
 }
 
+.display_question [style] {
+    color: white !important;
+}
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
 , .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
