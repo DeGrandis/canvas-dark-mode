@@ -60,7 +60,6 @@ a {
     text-decoration: none !important;
 }
 
-
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
 , .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
     color: #C7CDD1 !important;
@@ -130,6 +129,10 @@ a {
 
 #questions.assessing, .question {
     background: none !important;
+}
+
+.display_question [style] {
+    color: #fff !important;
 }
 
 .pinned-discussions-v2__wrapper, .unpinned-discussions-v2__wrapper, .ic-discussion-row,
