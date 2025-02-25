@@ -55,12 +55,10 @@ body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-to
     color: #C7CDD1 !important;
 }
 
-/*
 a {
     color: #fff !important;
     text-decoration: none !important;
 }
-*/
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
 , .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
@@ -204,5 +202,9 @@ code{
 
 .student-grades-link {
     background-color: white !important;
+    color: black !important;
+}
+
+.menu-item__text {
     color: black !important;
 }
