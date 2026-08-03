@@ -26,6 +26,7 @@
     {
       "matches": [
         "https://*.instructure.com/*",
+        "https://*canvas.mc3.edu/*",
         "https://canvas.vt.edu/*",
         "https://canvas.oregonstate.edu/*",
         "https://canvas.uw.edu/*",
