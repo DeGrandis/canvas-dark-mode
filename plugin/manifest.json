@@ -229,7 +229,8 @@
         "https://canvas.stir.ac.uk/*",
         "https://canvas.unab.cl/*",
         "https://lms.griffith.edu.au/*",
-        "https://canvas.qut.edu.au/*"
+        "https://canvas.qut.edu.au/*",
+        "https://canvas.seattlecolleges.edu/*"
       ],
       "css":[
           "css/styles.css"
