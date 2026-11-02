@@ -250,7 +250,8 @@
         "https://learn2.k12.com/*",
         "https://canvas.kth.se/*",
         "https://canvas.gonzaga.edu/*",
-        "https://canvas.its.virginia.edu/*"
+        "https://canvas.its.virginia.edu/*",
+        "https://canvas.ntnu.no/*"
       ],
       "css":[
           "css/styles.css"
