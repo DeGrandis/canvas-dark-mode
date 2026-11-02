@@ -259,7 +259,8 @@
         "https://mylms.korea.ac.kr/*",
         "https://www.canvas.umu.se/*",
         "https://lms.vinschool.edu.vn/*",
-        "https://canvas.alaska.edu/*"
+        "https://canvas.alaska.edu/*",
+        "https://canvas.imperial.ac.uk/*"
       ],
       "css":[
           "css/styles.css"
