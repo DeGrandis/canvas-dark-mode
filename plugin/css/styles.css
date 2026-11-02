@@ -32,7 +32,7 @@ span[role=dialog], span[role=dialog] > div, .agenda-wrapper, .agenda-day, .agend
     color: #888 !important;
 }
 
-body, .header-bar, .ui-tabs-anchor, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input, .ic-DashboardCard__box__header {
+body, .header-bar, .ui-tabs-anchor, .ui-tabs-active, .quiz-submission, .ig-header, .accessible-toggler, .ic-Input, .ic-DashboardCard__box__header {
     background: #1f1f1f !important;
     color: #C7CDD1 !important;
 }
