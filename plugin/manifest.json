@@ -278,7 +278,12 @@
       ],
       "css":[
           "css/styles.css"
-      ]
+      ],
+      "js":[
+          "js/contrast-guard.js"
+      ],
+      "all_frames": true,
+      "match_about_blank": true
     }
   ]
 }
