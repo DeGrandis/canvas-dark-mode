@@ -233,7 +233,8 @@
         "https://canvas.seattlecolleges.edu/*",
         "https://canvas.uh.edu/*",
         "https://canvas.illinoisstate.edu/*",
-        "https://canvas.dartmouth.edu/*"
+        "https://canvas.dartmouth.edu/*",
+        "https://canvas.ltu.se/*"
       ],
       "css":[
           "css/styles.css"
