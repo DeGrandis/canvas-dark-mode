@@ -1,6 +1,6 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "manifest_version": 3,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
@@ -274,7 +274,8 @@
         "https://canvas.stgeorges.bc.ca/*",
         "https://canvas.vub.be/*",
         "https://cientificavirtual.cientifica.edu.pe/*",
-        "https://canvas.kau.se/*"
+        "https://canvas.kau.se/*",
+        "https://mycourses.southeast.edu/*"
       ],
       "css":[
           "css/styles.css"
