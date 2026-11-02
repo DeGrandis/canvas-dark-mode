@@ -275,7 +275,7 @@ input[type=date], input[type=time], input[type=datetime-local] {
 }
 
 #calendar-list-holder, #other-calendars-list-holder, #undated-events,
-.context_list_context:hover {
+.context_list_context:hover, .Pages {
     background-color: #1f1f1f !important;
 }
 
