@@ -227,7 +227,8 @@
         "https://canvas.moravian.edu/*",
         "https://canvas-prod.ccsnh.edu/*",
         "https://canvas.stir.ac.uk/*",
-        "https://canvas.unab.cl/*"
+        "https://canvas.unab.cl/*",
+        "https://lms.griffith.edu.au/*"
       ],
       "css":[
           "css/styles.css"
