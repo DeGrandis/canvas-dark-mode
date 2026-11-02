@@ -66,6 +66,22 @@ a {
     color: #C7CDD1 !important;
 }
 
+html {
+    scrollbar-color: #4b4b4b #1f1f1f;
+}
+
+/* Canvas paints this tooltip with --ic-brand-global-nav-ic-icon-svg-fill--active,
+   which is also the active nav icon's fill. Changing the variable darkens the icon,
+   so the tooltip gets its own colour here instead. */
+body:not(.primary-nav-expanded) .menu-item__text {
+    background-color: #4b4b4b !important;
+    color: #fff !important;
+}
+
+body:not(.primary-nav-expanded) .menu-item__text::after {
+    border-right-color: #4b4b4b !important;
+}
+
 .ic-sidebar-logo {
     visibility: hidden;
 }
