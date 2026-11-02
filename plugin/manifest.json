@@ -249,7 +249,8 @@
         "https://canvas.ualberta.ca/*",
         "https://learn2.k12.com/*",
         "https://canvas.kth.se/*",
-        "https://canvas.gonzaga.edu/*"
+        "https://canvas.gonzaga.edu/*",
+        "https://canvas.its.virginia.edu/*"
       ],
       "css":[
           "css/styles.css"
