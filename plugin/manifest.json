@@ -247,7 +247,8 @@
         "https://canvas.bac.edu/*",
         "https://online.saddleback.edu/*",
         "https://canvas.ualberta.ca/*",
-        "https://learn2.k12.com/*"
+        "https://learn2.k12.com/*",
+        "https://canvas.kth.se/*"
       ],
       "css":[
           "css/styles.css"
