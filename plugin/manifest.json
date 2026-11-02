@@ -118,7 +118,6 @@
         "https://courses.letu.edu/*",
         "https://eagleonline.hccs.edu/*",
         "https://canvas.ewu.edu/*",
-        "https://www.canvas.stir.ac.uk/*",
         "https://courses.sfcollege.edu/*",
         "https://canvas.bham.ac.uk/*",
         "https://elearning.mines.edu/*",
@@ -260,7 +259,22 @@
         "https://www.canvas.umu.se/*",
         "https://lms.vinschool.edu.vn/*",
         "https://canvas.alaska.edu/*",
-        "https://canvas.imperial.ac.uk/*"
+        "https://canvas.imperial.ac.uk/*",
+        "https://onlinestudy.york.ac.uk/*",
+        "https://nuku.wgtn.ac.nz/*",
+        "https://canvas.du.se/*",
+        "https://learn0.k12.com/*",
+        "https://canvas.flinders.edu.au/*",
+        "https://lms.ncst.edu.bh/*",
+        "https://canvas.mc3.edu/*",
+        "https://canvas.umu.se/*",
+        "https://canvas.mdu.se/*",
+        "https://canvas.udayton.edu/*",
+        "https://canvas.krea.edu.in/*",
+        "https://canvas.stgeorges.bc.ca/*",
+        "https://canvas.vub.be/*",
+        "https://cientificavirtual.cientifica.edu.pe/*",
+        "https://canvas.kau.se/*"
       ],
       "css":[
           "css/styles.css"
