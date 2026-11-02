@@ -242,7 +242,8 @@
         "https://learn.wileyplus.com/*",
         "https://canvas.berklee.edu/*",
         "https://bocce.online.berklee.edu/*",
-        "https://canvas.sae.edu/*"
+        "https://canvas.sae.edu/*",
+        "https://canvas.gmu.edu/*"
       ],
       "css":[
           "css/styles.css"
