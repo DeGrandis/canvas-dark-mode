@@ -1,6 +1,16 @@
 :root:root {
-  --ic-brand-primary: #282828;
-  --ic-link-color: #282828;
+  /* A grey that holds 3:1 both ways, because Canvas uses these as a background
+     under white text and also as text and icons on the page. */
+  --ic-brand-primary: #707070;
+  --ic-brand-primary-darkened-5: #707070;
+  --ic-brand-primary-darkened-10: #707070;
+  --ic-brand-primary-darkened-15: #707070;
+  --ic-brand-primary-lightened-5: #707070;
+  --ic-brand-primary-lightened-10: #707070;
+  --ic-brand-primary-lightened-15: #707070;
+  --ic-link-color: #fff;
+  --ic-link-color-darkened-10: #C7CDD1;
+  --ic-link-color-lightened-10: #fff;
   --ic-brand-global-nav-bgd: #282828;
   --ic-brand-global-nav-logo-bgd: #282828;
   --ic-brand-Login-body-bgd-color: #282828;
@@ -8,7 +18,23 @@
   --ic-brand-global-nav-menu-item__text-color: #C7CDD1;
   --ic-brand-global-nav-menu-item__text-color--active: #fff;
   --ic-brand-global-nav-ic-icon-svg-fill--active: #fff;
+  --ic-brand-font-color-dark: #C7CDD1;
   --ic-brand-font-color-dark-lightened-15: #C7CDD1;
+  --ic-brand-font-color-dark-lightened-28: #AEB5BA;
+  /* Schools with a light nav pick dark icons. The nav is always dark here. */
+  --ic-brand-global-nav-ic-icon-svg-fill: #C7CDD1;
+  --ic-brand-global-nav-avatar-border: #C7CDD1;
+  --ic-brand-Login-Content-bgd-color: #282828;
+  --ic-brand-Login-Content-border-color: #4d4d4d;
+  --ic-brand-Login-Content-inner-bgd: #282828;
+  --ic-brand-Login-Content-inner-border: #4d4d4d;
+  --ic-brand-Login-Content-inner-body-bgd: #282828;
+  --ic-brand-Login-Content-inner-body-border: #4d4d4d;
+  --ic-brand-Login-Content-label-text-color: #C7CDD1;
+  --ic-brand-Login-Content-password-text-color: #C7CDD1;
+  --ic-brand-Login-footer-link-color: #C7CDD1;
+  --ic-brand-Login-footer-link-color-hover: #fff;
+  --ic-brand-Login-instructure-logo: #C7CDD1;
   --eHiXd-linkColor: #fff;
 }
 
@@ -55,14 +81,17 @@ body, .header-bar, .ui-tabs-anchor, .ui-tabs-active, .quiz-submission, .ig-heade
     color: #C7CDD1 !important;
 }
 
-a {
+/* Links styled as InstUI buttons keep the text colour matched to their own
+   background. :where keeps this no more specific than plain "a". */
+a:where(:not([class*="-baseButton"])) {
     color: #fff !important;
     text-decoration: none !important;
 }
 
 
 .status-description, .title, .locked_title, .points_possible_display,  .ig-details__item
-, .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label{
+, .name, h2, .comment, td, .score_value, .ic-Login__actions, .ic-Label,
+.page-title, .course-title, .message-list .subject {
     color: #C7CDD1 !important;
 }
 
@@ -198,8 +227,17 @@ body:not(.primary-nav-expanded) .menu-item__text::after {
     color: #7b7b7b !important;
 }
 
+code, pre {
+    background-color: #282828 !important;
+    border-color: #4d4d4d !important;
+}
+
 code{
     color: lightcyan !important;
+}
+
+pre {
+    color: #C7CDD1 !important;
 }
 
 .answer_label pre{
@@ -207,17 +245,88 @@ code{
     border: none !important;
 }
 
-.assignment-name {
-    background-color: white !important;
-    color: black !important;
+.slick-row, .slick-cell, .slick-header, .slick-header-column, .slick-headerrow,
+.assignment-name, .student-name, .student-grades-link {
+    background-color: #282828 !important;
+    color: #C7CDD1 !important;
 }
 
-.student-name {
-    background-color: white !important;
-    color: black !important;
+#skip_navigation_link {
+    background: #282828 !important;
 }
 
-.student-grades-link {
-    background-color: white !important;
-    color: black !important;
+/* Canvas sets these fields' text from --ic-brand-font-color-dark, which is light
+   here, so they cannot stay white. */
+select, textarea, input[type=text], input[type=password], input[type=email],
+input[type=url], input[type=number], input[type=search], input[type=tel],
+input[type=date], input[type=time], input[type=datetime-local] {
+    background-color: #1f1f1f !important;
+    border-color: #7b7b7b !important;
+    color: #C7CDD1 !important;
+}
+
+.well, .ui-widget-content, .ui-dialog, .ui-dialog-content, .ui-datepicker, .ui-menu,
+.ic-flash-success, .ic-flash-warning, .ic-flash-info,
+.assignment-student-header, #assignments-student-footer,
+#dashboard_header_container, #dashboard-planner-header, #dashboard-planner-header-aux,
+.Sidebar__TodoListContainer, .fc-event {
+    background-color: #282828 !important;
+    color: #C7CDD1 !important;
+}
+
+#calendar-list-holder, #other-calendars-list-holder, #undated-events,
+.context_list_context:hover {
+    background-color: #1f1f1f !important;
+}
+
+/* InstUI compiles colours into generated class names, with the school's colours
+   baked in, so the variables above never reach it. The hash in those names changes
+   with each Canvas deploy but the label after it does not, so match on the label. */
+table[class*="css-"], thead[class*="css-"], tbody[class*="css-"], tr[class*="css-"],
+[class*="css-"]:is([class*="-tray"], [class*="-modalBody"], [class*="-modalHeader"],
+[class*="-modalFooter"], [class*="-menu"], [class*="-options"], [class*="-panel__content"],
+[class*="-tabs__tabList"], [class*="-view-alert"], [class*="-topNavBarDesktopLayout"]) {
+    background-color: #282828 !important;
+    color: #C7CDD1 !important;
+}
+
+td[class*="css-"], th[class*="css-"],
+[class*="css-"]:is([class*="-menuItem"], [class*="-optionItem"]):not(:hover) {
+    background-color: transparent !important;
+    border-color: #4d4d4d !important;
+    color: #C7CDD1 !important;
+}
+
+tr[class*="css-"]:hover {
+    background-color: #4b4b4b !important;
+}
+
+[class*="-textInput__facade"], [class*="-textArea"] {
+    background-color: #1f1f1f !important;
+    border-color: #7b7b7b !important;
+}
+
+main[class*="css-"], [class^="contentLayout__"], [class*=" contentLayout__"],
+#react-router-portals > [class*="-view"] {
+    background-color: #1f1f1f !important;
+}
+
+[class*="-colHeader__button"], [class*="-formFieldLayout__label"], [class*="-radioInput__label"],
+[class*="-checkboxFacade__label"], [class*="-breadcrumb"], [class*="-view-heading"] {
+    color: #C7CDD1 !important;
+}
+
+/* Link buttons carry the school's colour and pass it down to their icons. */
+button[class*="-view-link"], [class*="css-"][class*="-tray"] svg {
+    color: #C7CDD1 !important;
+}
+
+/* Editors. The contrast guard stays out of these, inline colours would be saved
+   with the draft, so black text saved by the editor has to be handled here. */
+#tinymce {
+    caret-color: #fff;
+}
+
+:is(#tinymce, [contenteditable="true"]) :is([style*="color: #000"], [style*="color: rgb(0, 0, 0)"], [style*="color: black"]) {
+    color: #C7CDD1 !important;
 }
