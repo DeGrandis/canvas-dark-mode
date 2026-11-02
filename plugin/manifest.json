@@ -257,7 +257,8 @@
         "https://canvas.uic.edu/*",
         "https://absalon.ku.dk/*",
         "https://mylms.korea.ac.kr/*",
-        "https://www.canvas.umu.se/*"
+        "https://www.canvas.umu.se/*",
+        "https://lms.vinschool.edu.vn/*"
       ],
       "css":[
           "css/styles.css"
