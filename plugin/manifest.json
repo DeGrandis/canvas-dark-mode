@@ -254,7 +254,8 @@
         "https://canvas.ntnu.no/*",
         "https://aulavirtual.espol.edu.ec/*",
         "https://canvas.manchester.ac.uk/*",
-        "https://canvas.uic.edu/*"
+        "https://canvas.uic.edu/*",
+        "https://absalon.ku.dk/*"
       ],
       "css":[
           "css/styles.css"
