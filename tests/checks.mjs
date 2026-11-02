@@ -4,7 +4,7 @@
 //   node checks.mjs --ext <dir>     check another copy of the extension
 import { build } from 'esbuild';
 import { chromium } from 'playwright';
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,9 +15,10 @@ const flag = process.argv.indexOf('--ext');
 const ext = resolve(flag === -1 ? join(here, '..', 'plugin') : process.argv[flag + 1]);
 const live = process.argv.includes('--live');
 
+// A transparent colour reports as rgba(0, 0, 0, 0), which is not dark.
 const dark = (rgb) => {
-  const [r, g, b] = rgb.match(/\d+/g).map(Number);
-  return r < 90 && g < 90 && b < 90;
+  const [r, g, b, a = 1] = rgb.match(/[\d.]+/g).map(Number);
+  return a > 0 && r < 90 && g < 90 && b < 90;
 };
 
 let failed = 0;
@@ -26,7 +27,7 @@ function check(name, ok, detail = '') {
   console.log(`${ok ? 'pass' : 'FAIL'}  ${name}${ok ? '' : `  ${detail}`}`);
 }
 
-async function fixture(context) {
+async function fixtureHtml() {
   const bundle = await build({
     entryPoints: [join(here, 'fixture', 'app.jsx')],
     bundle: true,
@@ -37,16 +38,23 @@ async function fixture(context) {
     define: { 'process.env.NODE_ENV': '"production"', global: 'window' },
     logLevel: 'error',
   });
-  const html = readFileSync(join(here, 'fixture', 'page.html'), 'utf8')
+  return readFileSync(join(here, 'fixture', 'page.html'), 'utf8')
     .replace('</body>', () => `<script>${bundle.outputFiles[0].text}</script></body>`);
+}
 
-  // A host from the manifest, so the extension injects as it would on a real school.
+async function openFixture(context, host, html) {
   const page = await context.newPage();
-  await page.route('https://canvas.vt.edu/__fixture', (r) =>
+  await page.route(`https://${host}/__fixture`, (r) =>
     r.fulfill({ status: 200, contentType: 'text/html', body: html }));
-  await page.goto('https://canvas.vt.edu/__fixture');
+  await page.goto(`https://${host}/__fixture`);
   await page.waitForSelector('#files td');
   await page.waitForTimeout(2800);
+  return page;
+}
+
+async function fixture(context, html) {
+  // A host from the manifest, so the extension injects as it would on a real school.
+  const page = await openFixture(context, 'canvas.vt.edu', html);
 
   const css = (selector, prop) =>
     page.$eval(selector, (el, p) => getComputedStyle(el)[p], prop);
@@ -163,19 +171,214 @@ async function liveNav(context) {
   await page.close();
 }
 
-const profile = mkdtempSync(join(tmpdir(), 'cdm-checks-'));
-const context = await chromium.launchPersistentContext(profile, {
-  channel: 'chromium',
-  headless: true,
-  args: [`--disable-extensions-except=${ext}`, `--load-extension=${ext}`],
-});
+// Chromium can still be writing as it exits. A leftover temp folder is not a test failure.
+function tidy(dir) {
+  try {
+    rmSync(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 });
+  } catch {
+    console.log(`left behind ${dir}`);
+  }
+}
+
+async function launch(dir) {
+  const profile = mkdtempSync(join(tmpdir(), 'cdm-checks-'));
+  const context = await chromium.launchPersistentContext(profile, {
+    channel: 'chromium',
+    headless: true,
+    args: [`--disable-extensions-except=${dir}`, `--load-extension=${dir}`],
+  });
+  context.once('close', () => tidy(profile));
+  return context;
+}
+
+const serviceWorker = async (context) =>
+  context.serviceWorkers()[0] ?? context.waitForEvent('serviceworker');
+
+// A real Canvas host that is not on the list.
+const unlisted = 'canvas.wustl.edu';
+
+async function openPopup(context, id, browser) {
+  const page = await context.newPage();
+  await page.addInitScript(({ url, granted, canvas }) => {
+    window.calls = { request: [], remove: [], reload: [], closed: 0 };
+    window.close = () => { window.calls.closed += 1; };
+    chrome.tabs.query = async () => [{ id: 7, url }];
+    chrome.tabs.reload = (tabId) => window.calls.reload.push(tabId);
+    chrome.scripting.executeScript = async () => [{ result: canvas }];
+    chrome.permissions.contains = async () => granted;
+    chrome.permissions.request = async (asked) => {
+      window.calls.request.push(asked);
+      return true;
+    };
+    chrome.permissions.remove = async (asked) => {
+      window.calls.remove.push(asked);
+      return true;
+    };
+  }, browser);
+  await page.goto(`chrome-extension://${id}/popup.html`);
+  await page.waitForTimeout(300);
+  return page;
+}
+
+// Chrome's permission prompt cannot be driven from a test. The popup runs against a stubbed
+// browser API here, which covers what it asks for, and customSiteGrant covers what follows.
+async function popupStates(context) {
+  const id = new URL((await serviceWorker(context)).url()).hostname;
+  const button = (page) => page.locator('#site-action');
+  const status = (page) => page.locator('#site-status').textContent();
+
+  let page = await openPopup(context, id, { url: 'chrome://extensions/', granted: false });
+  check('popup hides site controls on browser pages', await page.locator('#site').isHidden());
+  await page.close();
+
+  page = await openPopup(context, id, { url: 'https://canvas.vt.edu/courses/1', granted: false });
+  check('popup shows a listed school as on with nothing to click',
+    (await status(page)).includes('on for canvas.vt.edu') && await button(page).isHidden());
+  await page.close();
+
+  page = await openPopup(context, id, { url: 'https://example.instructure.com/', granted: false });
+  check('popup treats *.instructure.com as listed', await button(page).isHidden());
+  await page.close();
+
+  page = await openPopup(context, id, { url: `https://${unlisted}/courses/1`, granted: false, canvas: true });
+  check('popup offers to enable an unlisted school',
+    (await button(page).textContent()) === 'Enable on this site');
+  check('popup does not warn on a real Canvas page',
+    !(await page.locator('#site-note').textContent()).includes('does not look like'));
+  await button(page).click();
+  await page.waitForTimeout(100);
+  const asked = await page.evaluate(() => window.calls);
+  check('enabling asks for that one site only',
+    JSON.stringify(asked.request) === JSON.stringify([{ origins: [`https://${unlisted}/*`] }]),
+    JSON.stringify(asked.request));
+  await page.close();
+
+  page = await openPopup(context, id, { url: 'https://example.com/', granted: false, canvas: false });
+  check('popup warns but still offers on a page that is not Canvas',
+    (await page.locator('#site-note').textContent()).includes('does not look like')
+    && await button(page).isVisible());
+  await page.close();
+
+  page = await openPopup(context, id, { url: `https://${unlisted}/`, granted: true });
+  check('popup offers to turn an enabled school off',
+    (await button(page).textContent()) === 'Turn off for this site');
+  await button(page).click();
+  await page.waitForTimeout(100);
+  const removed = await page.evaluate(() => window.calls);
+  check('turning off removes the site and reloads the tab',
+    JSON.stringify(removed.remove) === JSON.stringify([{ origins: [`https://${unlisted}/*`] }])
+    && removed.reload[0] === 7, JSON.stringify(removed));
+  await page.close();
+}
+
+// Nothing here can answer the prompt, but the real API rejects at once if the manifest does
+// not cover the request, or if it was not made from a click.
+async function realRequest(context) {
+  const id = new URL((await serviceWorker(context)).url()).hostname;
+  const page = await context.newPage();
+  await page.goto(`chrome-extension://${id}/popup.html`);
+  await page.evaluate((site) => {
+    window.outcome = 'waiting on prompt';
+    document.body.addEventListener('click', () => {
+      chrome.permissions.request({ origins: [site] })
+        .then((granted) => { window.outcome = `answered ${granted}`; })
+        .catch((e) => { window.outcome = `rejected: ${e.message}`; });
+    });
+  }, `https://${unlisted}/*`);
+  await page.mouse.click(10, 10);
+  await page.waitForTimeout(800);
+  const outcome = await page.evaluate(() => window.outcome);
+  check('the browser accepts the real permission request', !outcome.startsWith('rejected'), outcome);
+  await page.close();
+}
+
+async function customSiteGrant(html) {
+  // Declaring the host hands the service worker what it sees after a user approves the prompt.
+  const copy = mkdtempSync(join(tmpdir(), 'cdm-granted-'));
+  cpSync(ext, copy, { recursive: true });
+  const manifest = JSON.parse(readFileSync(join(copy, 'manifest.json'), 'utf8'));
+  manifest.host_permissions = [`https://${unlisted}/*`];
+  writeFileSync(join(copy, 'manifest.json'), JSON.stringify(manifest));
+
+  const context = await launch(copy);
+  try {
+    const worker = await serviceWorker(context);
+    const registered = () => worker.evaluate(async () =>
+      (await chrome.scripting.getRegisteredContentScripts()).map((s) => s.id));
+    await worker.evaluate(() => queueSync());
+    const site = `https://${unlisted}/*`;
+    check('a granted site gets registered', (await registered()).join() === site, await registered());
+
+    const page = await openFixture(context, unlisted, html);
+    check('a granted site goes dark',
+      dark(await page.$eval('body', (el) => getComputedStyle(el).backgroundColor)));
+    check('the contrast guard runs on a granted site',
+      !dark(await page.$eval('#black-on-page span', (el) => getComputedStyle(el).color)));
+    const editor = page.frames().find((f) => f !== page.mainFrame());
+    check('the editor iframe goes dark on a granted site',
+      dark(await editor.$eval('body', (el) => getComputedStyle(el).backgroundColor)));
+    check('nothing is written into the editor on a granted site',
+      (await editor.$eval('#draft', (el) => el.getAttribute('style'))) === null);
+    await page.close();
+
+    if (live) {
+      const real = await context.newPage();
+      await real.goto(`https://${unlisted}/login/canvas`, { waitUntil: 'domcontentloaded' });
+      await real.waitForTimeout(3000);
+      check('a granted site goes dark on live Canvas',
+        dark(await real.$eval('body', (el) => getComputedStyle(el).backgroundColor)));
+      const audit = await real.evaluate(auditFrame);
+      check('no text under 3:1 on that live school', audit.fails.length === 0,
+        JSON.stringify(audit.fails.slice(0, 3)));
+      await real.close();
+    }
+
+    await worker.evaluate(async () => {
+      await chrome.scripting.registerContentScripts([{
+        id: 'https://gone.example/*', matches: ['https://gone.example/*'], css: ['css/styles.css'],
+      }]);
+      await queueSync();
+    });
+    check('a site that lost access is unregistered', (await registered()).join() === site, await registered());
+
+    await worker.evaluate(async () => {
+      await chrome.scripting.unregisterContentScripts();
+      await queueSync();
+    });
+    check('sites are rebuilt after an update clears them', (await registered()).join() === site);
+  } finally {
+    await context.close();
+    tidy(copy);
+  }
+}
+
+const manifest = JSON.parse(readFileSync(join(ext, 'manifest.json'), 'utf8'));
+const context = await launch(ext);
 
 try {
-  await fixture(context);
+  const html = await fixtureHtml();
+  await fixture(context, html);
   if (live) await liveNav(context);
+
+  // Anything beyond these would make every existing user re-approve the extension.
+  check('permissions add no install warning',
+    (manifest.permissions ?? []).every((p) => ['activeTab', 'scripting'].includes(p)));
+  check('access to all sites stays optional',
+    !manifest.host_permissions && manifest.optional_host_permissions?.[0] === 'https://*/*');
+
+  if (manifest.background) {
+    const page = await openFixture(context, unlisted, html);
+    check('an unlisted site is left alone until enabled',
+      !dark(await page.$eval('body', (el) => getComputedStyle(el).backgroundColor)));
+    await page.close();
+    await popupStates(context);
+    await customSiteGrant(html);
+    await realRequest(context);
+  } else {
+    check('extension can enable sites', false, 'no service worker');
+  }
 } finally {
   await context.close();
-  rmSync(profile, { recursive: true, force: true, maxRetries: 3 });
 }
 
 console.log(failed ? `\n${failed} failed` : '\nall passed');

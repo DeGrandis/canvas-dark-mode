@@ -12,19 +12,39 @@
         h3{
             color: white
         }
+        #site{
+            padding: 12px;
+            border: 1px solid #7b7b7b;
+            border-radius: 4px;
+        }
+        #site p{
+            margin: 0 0 8px 0;
+        }
+        #site-action{
+            padding: 6px 12px;
+            border: 1px solid #C7CDD1;
+            border-radius: 4px;
+            background-color: #4b4b4b;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+<div id="site" hidden>
+    <p id="site-status"></p>
+    <p id="site-note"></p>
+    <button id="site-action" hidden></button>
+</div>
+
 <h1>Is Canvas Dark Mode Not Working?</h1>
 
 <h3><i>Canvas is still light mode!</i></h3>
 <p>After installing, try refreshing the canvas page.</p>
 
 <h3><i>I refreshed and it's still not working!</i></h3>
-<h4>8/24/22 Update {I have a fulltime job now!}</h4>
-<p>In the past, I had people email me their school.  I became flooded with emails, so as of now
-    the best way is to make a pull request with your school url as a single line addition. <br>
-    I am currently developing a better way to streamline requests.  Unfortuantely, I must work around this chrome plugin limitation.
+<p>Your school might not be on this plugin's list.  Open your Canvas page, click this plugin's icon,
+    and click <strong>Enable on this site</strong> at the top of this window.  You do not need to wait for an update.
 </p>
 
 <p><s>Your school's URL might not be in the list that this plugin has.  
@@ -53,8 +73,8 @@
 <h3><i>Why does this plugin disable itself when it updates?!  It's very annoying!</i></h3>
 <p>This is a restriction with how chrome plugins deal with security on the URLs they work on.
     When I add your school's URL to this plugin's list, it will trigger an update in which you will have to approve the plugin to work on the 
-    new URls.  As a developer, I cannot work around this other than with brute force of adding urls.  
-    Chrome does not let me use wildcards in the domain of the URL.  So "canvas.*.edu" is not allowed.  Though if it was, we would not have this issue.
+    new URls.  Chrome does not let me use wildcards in the domain of the URL, so "canvas.*.edu" is not allowed.
+    Schools turned on with the <strong>Enable on this site</strong> button do not need this, so the list should rarely change now.
 </p>
 
 <h3><i>I am completely satisfied with this dark mode!</i></h3>
@@ -63,6 +83,7 @@
 
 <p>For anything else or other inquires, send me an email at
     <strong style="color: rgb(255, 85, 85);">robd@vt.edu</strong> </p>
+<script src="js/popup.js"></script>
 </body>
 
 </html>

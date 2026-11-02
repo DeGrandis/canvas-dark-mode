@@ -75,11 +75,13 @@ reporter's own page was visited.
 
 - #109: embedded documents draw as white pages. Only the area around them can be dark.
 - #59: the math menu is not styled.
-- #196: `school.managedclass.com` did not respond, so it could not be confirmed as Canvas.
+- #196: `school.managedclass.com` did not respond, so it could not be confirmed as Canvas and
+  stays off the list. That user can now try **Enable on this site**.
 - #206: not this extension. That school was not in the manifest, so it did not run there.
   The school has been added.
 
-**Feature requests, not built:** #41 (off switch), #43 (custom colours), #201 (enter your own
-URL)
+**Feature requests, built:** #201 (**Enable on this site** in the popup)
+
+**Feature requests, not built:** #41 (off switch), #43 (custom colours)
 
 **Not actionable:** #28 (closed, Firefox add-on exists), #216

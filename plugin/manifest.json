@@ -21,6 +21,15 @@
     "default_title": "Canvas Dark Mode"
   },
   "default_locale": "en",
+  "minimum_chrome_version": "121",
+
+  "permissions": ["activeTab", "scripting"],
+  "optional_host_permissions": ["https://*/*"],
+
+  "background": {
+    "service_worker": "js/background.js",
+    "scripts": ["js/background.js"]
+  },
 
   "content_scripts": [
     {

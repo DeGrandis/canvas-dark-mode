@@ -45,7 +45,16 @@ node audit.mjs --authed pages.json --label signed-in
 
 The profile stays in `tests/out/.profile`, which is ignored by git.
 
+To check **Enable on this site** by hand, which is the one step these tests cannot do because
+nothing can answer the browser's permission prompt: load `plugin/` unpacked, open a Canvas
+school that is not on the list such as `https://canvas.wustl.edu/login/canvas`, click the
+extension's icon, then **Enable on this site** and **Allow**. The page should reload dark.
+
 ## Adding a school
+
+Most schools no longer need this, because anyone can turn on their own with **Enable on this
+site**. Adding a school to the manifest makes every user re-approve the extension, so keep it
+for very large schools.
 
 Check it really is Canvas before adding it. The extension restyles every page it matches.
 
