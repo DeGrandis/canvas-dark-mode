@@ -246,7 +246,8 @@
         "https://canvas.gmu.edu/*",
         "https://canvas.bac.edu/*",
         "https://online.saddleback.edu/*",
-        "https://canvas.ualberta.ca/*"
+        "https://canvas.ualberta.ca/*",
+        "https://learn2.k12.com/*"
       ],
       "css":[
           "css/styles.css"
