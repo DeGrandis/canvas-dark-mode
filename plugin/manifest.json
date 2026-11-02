@@ -256,7 +256,8 @@
         "https://canvas.manchester.ac.uk/*",
         "https://canvas.uic.edu/*",
         "https://absalon.ku.dk/*",
-        "https://mylms.korea.ac.kr/*"
+        "https://mylms.korea.ac.kr/*",
+        "https://www.canvas.umu.se/*"
       ],
       "css":[
           "css/styles.css"
