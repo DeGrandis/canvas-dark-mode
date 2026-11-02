@@ -243,7 +243,8 @@
         "https://canvas.berklee.edu/*",
         "https://bocce.online.berklee.edu/*",
         "https://canvas.sae.edu/*",
-        "https://canvas.gmu.edu/*"
+        "https://canvas.gmu.edu/*",
+        "https://canvas.bac.edu/*"
       ],
       "css":[
           "css/styles.css"
