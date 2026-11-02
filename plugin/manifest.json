@@ -236,7 +236,8 @@
         "https://canvas.dartmouth.edu/*",
         "https://canvas.ltu.se/*",
         "https://canvas.jccc.edu/*",
-        "https://canvas.nau.edu/*"
+        "https://canvas.nau.edu/*",
+        "https://canvas.mit.edu/*"
       ],
       "css":[
           "css/styles.css"
