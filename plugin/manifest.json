@@ -251,7 +251,8 @@
         "https://canvas.kth.se/*",
         "https://canvas.gonzaga.edu/*",
         "https://canvas.its.virginia.edu/*",
-        "https://canvas.ntnu.no/*"
+        "https://canvas.ntnu.no/*",
+        "https://aulavirtual.espol.edu.ec/*"
       ],
       "css":[
           "css/styles.css"
