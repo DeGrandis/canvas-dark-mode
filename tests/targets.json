@@ -1,0 +1,22 @@
+{
+  "canvas.wisc.edu": {
+    "courses": [13, 65422],
+    "paths": ["", "/modules", "/assignments", "/assignments/syllabus", "/quizzes", "/wiki", "/announcements"]
+  },
+  "canvas.vt.edu": {
+    "courses": [24378, 80095],
+    "paths": ["", "/modules", "/assignments", "/assignments/syllabus", "/quizzes", "/wiki"]
+  },
+  "canvas.cornell.edu": {
+    "courses": [17407],
+    "paths": ["", "/modules", "/assignments", "/assignments/syllabus", "/wiki"]
+  },
+  "canvas.northwestern.edu": {
+    "courses": [1580],
+    "paths": ["", "/modules"]
+  },
+  "canvas.tufts.edu": {
+    "courses": [521],
+    "paths": ["", "/modules"]
+  }
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fixture</title>
+  <!-- A school theme, set the way Canvas sets it: dark nav icons, navy text. -->
+  <style>
+    :root {
+      --ic-brand-font-color-dark: #273540;
+      --ic-brand-global-nav-ic-icon-svg-fill: #4e2a84;
+      --ic-link-color: #4e2a84;
+    }
+    .nav-icon { fill: var(--ic-brand-global-nav-ic-icon-svg-fill); }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="menu-host"></div>
+  <svg class="nav-icon" id="nav-icon" width="20" height="20"><rect width="20" height="20"></rect></svg>
+
+  <div class="user_content" id="content">
+    <p id="black-on-page"><span style="color: #000000;">Teacher black text on the page</span></p>
+    <p id="navy-on-page" style="color: #000012;">Near black on the page</p>
+
+    <div id="white-panel" style="background-color: #ffffff; color: #333333;">
+      <p id="panel-text">Dark text on a school's white panel</p>
+      <a id="panel-link" href="#x">White panel link</a>
+    </div>
+
+    <div id="purple-bar" style="background-color: #4e2a84;">
+      <h3 id="purple-heading" style="color: #ffffff;">White on purple</h3>
+    </div>
+
+    <div id="callout" style="background-color: #faf9ce;">
+      <a id="callout-link" href="#x">Link on a yellow callout</a>
+    </div>
+
+    <pre id="pre-block">code block</pre>
+    <code id="code-inline">inline code</code>
+  </div>
+
+  <div id="inline-editor" contenteditable="true">
+    <span id="editor-span" style="color: #000000;">Draft text in an inline editor</span>
+  </div>
+
+  <iframe id="rce" title="Rich content editor"></iframe>
+  <script>
+    const rce = document.getElementById('rce').contentDocument;
+    rce.body.id = 'tinymce';
+    rce.body.className = 'mce-content-body';
+    rce.body.setAttribute('contenteditable', 'true');
+    rce.body.innerHTML = '<p id="draft">Plain draft</p><p><span id="draft-black" style="color: #000000;">Black draft</span></p>';
+  </script>
+</body>
+</html>

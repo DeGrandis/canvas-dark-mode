@@ -22,7 +22,7 @@ If you would like to fix/change any of the styles, your expertise is welcome!  T
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Open `chrome://extensions/` on your browser
 4. Click `Load Unpacked`
-5. Make your changes, verify they work. (remember, other schools use this, not just yours!)
+5. Make your changes, verify they work with the [tests](tests/README.md), which need no Canvas account. (remember, other schools use this, not just yours!)
 6. Push to your fork and [submit a pull request](https://github.com/DeGrandis/canvas-dark-mode/compare)
 7. Wait for your code to be reviewed.
 

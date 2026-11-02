@@ -1,0 +1,26 @@
+{
+  "name": "canvas-dark-mode-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node checks.mjs --live",
+    "audit": "node audit.mjs",
+    "schools": "node audit.mjs --schools"
+  },
+  "devDependencies": {
+    "@instructure/emotion": "11.6.0",
+    "@instructure/ui-alerts": "11.6.0",
+    "@instructure/ui-buttons": "11.6.0",
+    "@instructure/ui-link": "11.6.0",
+    "@instructure/ui-menu": "11.6.0",
+    "@instructure/ui-table": "11.6.0",
+    "@instructure/ui-text": "11.6.0",
+    "@instructure/ui-text-input": "11.6.0",
+    "@instructure/ui-themes": "11.6.0",
+    "@instructure/ui-tray": "11.6.0",
+    "esbuild": "0.24.2",
+    "playwright": "1.49.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
