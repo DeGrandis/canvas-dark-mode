@@ -258,7 +258,8 @@
         "https://absalon.ku.dk/*",
         "https://mylms.korea.ac.kr/*",
         "https://www.canvas.umu.se/*",
-        "https://lms.vinschool.edu.vn/*"
+        "https://lms.vinschool.edu.vn/*",
+        "https://canvas.alaska.edu/*"
       ],
       "css":[
           "css/styles.css"
