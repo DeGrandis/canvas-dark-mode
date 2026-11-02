@@ -238,7 +238,10 @@
         "https://canvas.jccc.edu/*",
         "https://canvas.nau.edu/*",
         "https://canvas.mit.edu/*",
-        "https://canvas.qub.ac.uk/*"
+        "https://canvas.qub.ac.uk/*",
+        "https://learn.wileyplus.com/*",
+        "https://canvas.berklee.edu/*",
+        "https://bocce.online.berklee.edu/*"
       ],
       "css":[
           "css/styles.css"
