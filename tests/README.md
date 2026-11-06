@@ -52,15 +52,10 @@ extension's icon, then **Enable on this site** and **Allow**. The page should re
 
 ## Adding a school
 
-Most schools no longer need this, because anyone can turn on their own with **Enable on this
-site**. Adding a school to the manifest makes every user re-approve the extension, so keep it
-for very large schools.
-
-Check it really is Canvas before adding it. The extension restyles every page it matches.
-
-```bash
-curl -sI https://canvas.example.edu/login/canvas | grep -i x-canvas-meta
-```
+Don't. The manifest's list is frozen at the schools in version 1.1.6, because any new host
+makes Chrome switch the extension off for every existing user until they approve it again.
+Anyone at another school turns it on with **Enable on this site**, and `npm run check` fails
+if the list grows.
 
 Hosts under `*.instructure.com` are already covered.
 

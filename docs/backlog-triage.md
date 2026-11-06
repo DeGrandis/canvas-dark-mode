@@ -9,6 +9,10 @@ Every pull request and issue up to #217, and what happened to it on
 once the branch reaches master). URLs were normalized and each host was confirmed as Canvas
 by its `x-canvas-meta` response header.
 
+The schools these PRs added were taken back out before release, so the manifest matches the
+1.1.6 list exactly. New hosts would have made every existing user approve the extension again.
+Those schools now turn it on with **Enable on this site**.
+
 - Schools: #32, #53, #72, #78, #80, #85, #86, #95, #107, #110, #114, #121, #125, #133, #134,
   #136, #137, #138, #144, #148, #152, #155, #158, #159, #164, #165, #168, #169, #172, #179,
   #187, #188, #191, #193, #194, #195, #198, #204, #209, #212, #214
@@ -41,7 +45,7 @@ the popup's HTML)
 "Confirmed" means the kind of bug was reproduced and then shown fixed, not that each
 reporter's own page was visited.
 
-**School now supported, or already covered by `*.instructure.com`:** #6, #62, #63, #66, #68,
+**School request, covered by Enable on this site, the 1.1.6 list or `*.instructure.com`:** #6, #62, #63, #66, #68,
 #69, #74, #81, #90, #98, #103, #106, #112, #118, #150, #151, #153, #157, #177, #181, #205
 
 **Fixed, confirmed on live Canvas:** #73 (school nav icons), #94, #184 (nav tooltip), #108
@@ -78,7 +82,7 @@ reporter's own page was visited.
 - #196: `school.managedclass.com` did not respond, so it could not be confirmed as Canvas and
   stays off the list. That user can now try **Enable on this site**.
 - #206: not this extension. That school was not in the manifest, so it did not run there.
-  The school has been added.
+  That school can now use **Enable on this site**.
 
 **Feature requests, built:** #201 (**Enable on this site** in the popup)
 

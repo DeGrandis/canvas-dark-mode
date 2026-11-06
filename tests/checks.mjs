@@ -365,6 +365,9 @@ try {
     (manifest.permissions ?? []).every((p) => ['activeTab', 'scripting'].includes(p)));
   check('access to all sites stays optional',
     !manifest.host_permissions && manifest.optional_host_permissions?.[0] === 'https://*/*');
+  // The 201 schools in 1.1.6. New schools use Enable on this site instead.
+  check('school list does not grow',
+    manifest.content_scripts.every((script) => script.matches.length <= 201));
 
   if (manifest.background) {
     const page = await openFixture(context, unlisted, html);
