@@ -1,42 +1,37 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Build & Deploy
 
-# Controls when the action will run. 
+# Run by hand from the Actions tab.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      check_only:
+        description: Only check the store credentials (untick to upload and submit for review)
+        type: boolean
+        default: true
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+permissions:
+  contents: read
+
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Find Directory
-        run: cd $GITHUB_WORKSPACE
-        
-
-      - name: Zip Plugin
-        run: zip -r extension.zip ./plugin
-        
-      - name: Upload to Chrome Webstore
-        uses: trmcnvn/chrome-addon@v2
+      # Pinned to a commit so a moved tag cannot change what runs next to the store secrets.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # ID of the extension that you are updating
-          extension: jbfgmfpakhabhhpefblmehnadjjkadna
-          # Path to a .zip of your addon
-          zip: ./extension.zip
-          # Google OAuth2 client id
-          client-id: ${{ secrets.CHROME_CLIENT_ID }}
-          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          persist-credentials: false
 
+      # Zip from inside plugin/ so manifest.json sits at the root of the zip.
+      - name: Zip Plugin
+        run: cd plugin && zip -r ../extension.zip .
 
+      # Only this step sees the store secrets.
+      - name: Upload to Chrome Webstore
+        run: bash .github/scripts/publish-chrome.sh
+        env:
+          CHECK_ONLY: ${{ inputs.check_only }}
+          EXTENSION_ID: jbfgmfpakhabhhpefblmehnadjjkadna
+          PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}

@@ -1,6 +1,6 @@
 {
   "name": "Canvas Dark Mode",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "manifest_version": 3,
   "description": "Dark Mode for Canvas.",
   "homepage_url": "https://github.com/DeGrandis/canvas-dark-mode",
@@ -21,6 +21,15 @@
     "default_title": "Canvas Dark Mode"
   },
   "default_locale": "en",
+  "minimum_chrome_version": "121",
+
+  "permissions": ["activeTab", "scripting", "storage"],
+  "optional_host_permissions": ["https://*/*"],
+
+  "background": {
+    "service_worker": "js/background.js",
+    "scripts": ["js/background.js"]
+  },
 
   "content_scripts": [
     {
@@ -229,7 +238,14 @@
       ],
       "css":[
           "css/styles.css"
-      ]
+      ],
+      "js":[
+          "js/switch.js",
+          "js/contrast-guard.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
     }
   ]
 }
