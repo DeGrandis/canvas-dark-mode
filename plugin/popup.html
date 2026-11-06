@@ -166,8 +166,17 @@
             margin-top: -4px;
         }
 
+        .about{
+            color: var(--muted);
+        }
+
         footer{
-            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
             color: var(--muted);
             font-size: 12px;
         }
@@ -217,8 +226,19 @@
         <strong>Enable on this site</strong>, so this should not happen again.</p>
 </details>
 
+<details>
+    <summary>I am completely satisfied with this dark mode!</summary>
+    <p>Thank you! That's great to hear.</p>
+</details>
+
+<h2>About</h2>
+<p class="about">I made this plugin by hand back in my 2019 computer security class. I am so happy that
+    you are using it and find it useful. Coding was so different back then, and it brings me joy to
+    know this is still around.</p>
+
 <footer>
-    For anything else, email <a href="mailto:rtdegrandis@gmail.com">rtdegrandis@gmail.com</a>
+    <span>For anything else, email <a href="mailto:rtdegrandis@gmail.com">rtdegrandis@gmail.com</a></span>
+    <span id="version"></span>
 </footer>
 
 <script src="js/popup.js"></script>

@@ -297,6 +297,8 @@ async function powerSwitch(context, html) {
   await popup.goto(`chrome-extension://${id}/popup.html`);
   await popup.waitForTimeout(200);
   check('popup switch starts on', await popup.locator('#power-switch').isChecked());
+  check('popup shows the version',
+    (await popup.locator('#version').textContent()) === `v${manifest.version}`);
   await popup.locator('#power-switch').click();
   await popup.waitForTimeout(200);
   check('turning the switch off is saved',

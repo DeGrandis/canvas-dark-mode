@@ -5,6 +5,8 @@ const action = document.getElementById('site-action');
 const power = document.getElementById('power-switch');
 const powerLabel = document.getElementById('power-label');
 
+document.getElementById('version').textContent = `v${chrome.runtime.getManifest().version}`;
+
 // Open pages pick the change up through js/switch.js, with no reload.
 const showPower = () => {
   powerLabel.textContent = power.checked ? 'Dark mode is on' : 'Dark mode is off everywhere';
