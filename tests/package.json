@@ -18,7 +18,7 @@
     "@instructure/ui-text-input": "11.6.0",
     "@instructure/ui-themes": "11.6.0",
     "@instructure/ui-tray": "11.6.0",
-    "esbuild": "0.24.2",
+    "esbuild": "0.28.1",
     "playwright": "1.49.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
