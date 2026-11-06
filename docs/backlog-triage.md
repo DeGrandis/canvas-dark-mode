@@ -1,6 +1,6 @@
 # Backlog triage, November 2026
 
-Every pull request and issue up to #217, and what happened to it on
+Every pull request up to #220 and issue up to #217, and what happened to it on
 `feature/merge-community-backlog`.
 
 ## Pull requests
@@ -15,7 +15,7 @@ Those schools now turn it on with **Enable on this site**.
 
 - Schools: #32, #53, #72, #78, #80, #85, #86, #95, #107, #110, #114, #121, #125, #133, #134,
   #136, #137, #138, #144, #148, #152, #155, #158, #159, #164, #165, #168, #169, #172, #179,
-  #187, #188, #191, #193, #194, #195, #198, #204, #209, #212, #214
+  #187, #188, #191, #193, #194, #195, #198, #204, #209, #212, #214, #220
 - Styles taken as written: #67
 - Styles taken in part, see the merge commit: #91 (scrollbars, tooltip)
 - Intent kept, code replaced, see the merge commit: #14, #92, #131
