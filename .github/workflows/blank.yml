@@ -3,6 +3,11 @@ name: Build & Deploy
 # Run by hand from the Actions tab.
 on:
   workflow_dispatch:
+    inputs:
+      check_only:
+        description: Only check the store credentials (untick to upload and submit for review)
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -24,6 +29,7 @@ jobs:
       - name: Upload to Chrome Webstore
         run: bash .github/scripts/publish-chrome.sh
         env:
+          CHECK_ONLY: ${{ inputs.check_only }}
           EXTENSION_ID: jbfgmfpakhabhhpefblmehnadjjkadna
           PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}

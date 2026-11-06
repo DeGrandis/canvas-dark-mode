@@ -2,7 +2,8 @@
 # Uploads extension.zip to the Chrome Web Store and submits it for review, calling the
 # Chrome Web Store API v2 directly: https://developer.chrome.com/docs/webstore/using-api
 #
-# Needs EXTENSION_ID, PUBLISHER_ID, CLIENT_ID, CLIENT_SECRET and REFRESH_TOKEN.
+# Needs EXTENSION_ID, PUBLISHER_ID, CLIENT_ID, CLIENT_SECRET and REFRESH_TOKEN, and takes
+# an optional CHECK_ONLY.
 set -euo pipefail
 
 api=https://chromewebstore.googleapis.com
@@ -28,6 +29,15 @@ token=$(field access_token <<<"$response")
 # The access token is not a stored secret, so GitHub would not hide it in logs by itself.
 echo "::add-mask::$token"
 auth="Authorization: Bearer $token"
+
+# With CHECK_ONLY=true, stop once the store item can be read, so nothing is uploaded or published.
+if [ "${CHECK_ONLY:-}" = true ]; then
+  response=$(curl -sS --fail-with-body -H "$auth" "$api/v2/$item:fetchStatus") \
+    || fail "Status check failed: $response"
+  echo "$response"
+  echo "The credentials work and can read the store item. Nothing was uploaded."
+  exit 0
+fi
 
 response=$(curl -sS --fail-with-body -X POST -H "$auth" -T extension.zip \
   "$api/upload/v2/$item:upload") || fail "Upload failed: $response"
