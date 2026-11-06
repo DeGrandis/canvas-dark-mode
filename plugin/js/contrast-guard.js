@@ -59,10 +59,15 @@
     return contrast(WHITE, bg) >= contrast(BLACK, bg) ? WHITE : BLACK;
   };
 
+  // Set by js/switch.js while the popup's switch is off.
+  const isOff = () => document.documentElement.hasAttribute('data-dark-mode-off');
+
   let checked = new WeakSet();
+  // Each repaired element with the inline colour it had, so turning off can put it back.
+  let repaired = [];
 
   const repair = (el) => {
-    if (!el || checked.has(el) || SKIP.has(el.tagName)) return;
+    if (!el || isOff() || checked.has(el) || SKIP.has(el.tagName)) return;
     checked.add(el);
     if (el.closest('[contenteditable="true"]')) return;
 
@@ -73,7 +78,19 @@
     if (!bg || contrast(over(fg, bg), bg) >= MIN_CONTRAST) return;
 
     const { r, g, b } = pick(bg);
+    repaired.push([new WeakRef(el), el.style.getPropertyValue('color'), el.style.getPropertyPriority('color')]);
     el.style.setProperty('color', `rgb(${r}, ${g}, ${b})`, 'important');
+  };
+
+  const undo = () => {
+    // Newest first, in case an element was repaired twice.
+    for (const [ref, value, priority] of repaired.reverse()) {
+      const el = ref.deref();
+      if (!el) continue;
+      if (value) el.style.setProperty('color', value, priority);
+      else el.style.removeProperty('color');
+    }
+    repaired = [];
   };
 
   // Work happens in idle time so a large page like the Gradebook never blocks on it.
@@ -98,13 +115,14 @@
   };
 
   const scan = (root) => {
+    if (isOff()) return;
     walkers.push(document.createTreeWalker(root, NodeFilter.SHOW_TEXT));
     schedule();
   };
 
   // No attribute watching, so the guard's own style writes never wake it back up.
   // characterData catches React filling in text on a node that started out empty.
-  new MutationObserver((records) => {
+  const watcher = new MutationObserver((records) => {
     for (const record of records) {
       if (record.type === 'characterData') {
         if (record.target.parentElement) scan(record.target.parentElement);
@@ -115,14 +133,27 @@
         if (root) scan(root);
       }
     }
-  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  });
 
   const rescan = () => {
     checked = new WeakSet();
-    scan(document.body);
+    if (document.body) scan(document.body);
   };
 
-  if (document.body) scan(document.body);
+  // This runs at document_start for js/switch.js, but colours mean nothing until the page
+  // and its stylesheets have arrived.
+  const start = () => {
+    watcher.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+    rescan();
+  };
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
+
+  new MutationObserver(() => {
+    if (!isOff()) return rescan();
+    walkers.length = 0;
+    undo();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-dark-mode-off'] });
 
   // Late stylesheets can change what is already on screen, so look again.
   addEventListener('load', () => {

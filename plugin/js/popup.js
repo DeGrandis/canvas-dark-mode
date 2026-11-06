@@ -2,6 +2,21 @@ const panel = document.getElementById('site');
 const status = document.getElementById('site-status');
 const note = document.getElementById('site-note');
 const action = document.getElementById('site-action');
+const power = document.getElementById('power-switch');
+const powerLabel = document.getElementById('power-label');
+
+// Open pages pick the change up through js/switch.js, with no reload.
+const showPower = () => {
+  powerLabel.textContent = power.checked ? 'Dark mode is on' : 'Dark mode is off everywhere';
+};
+chrome.storage.local.get('off').then(({ off }) => {
+  power.checked = !off;
+  showPower();
+});
+power.addEventListener('change', () => {
+  showPower();
+  chrome.storage.local.set({ off: !power.checked });
+});
 
 const onBuiltInList = (host) =>
   chrome.runtime.getManifest().content_scripts[0].matches.some((pattern) => {

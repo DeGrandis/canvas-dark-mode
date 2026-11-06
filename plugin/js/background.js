@@ -24,9 +24,10 @@ async function sync() {
       id: site,
       matches: [site],
       css: ['css/styles.css'],
-      js: ['js/contrast-guard.js'],
+      js: ['js/switch.js', 'js/contrast-guard.js'],
       allFrames: true,
       matchOriginAsFallback: true,
+      runAt: 'document_start',
     })));
   }
 }
@@ -35,9 +36,27 @@ async function sync() {
 let pending = Promise.resolve();
 const queueSync = () => (pending = pending.then(sync, sync));
 
+// The icon says OFF while the popup's switch is off, so a light Canvas page is not taken
+// for a broken extension.
+async function badge() {
+  const { off } = await chrome.storage.local.get('off');
+  await chrome.action.setBadgeBackgroundColor({ color: '#4b4b4b' });
+  await chrome.action.setBadgeText({ text: off ? 'OFF' : '' });
+}
+
+chrome.storage.onChanged.addListener((changes) => {
+  if ('off' in changes) badge();
+});
+
 // Registered scripts do not survive an extension update, so this rebuilds them.
-chrome.runtime.onInstalled.addListener(queueSync);
-chrome.runtime.onStartup.addListener(queueSync);
+chrome.runtime.onInstalled.addListener(() => {
+  queueSync();
+  badge();
+});
+chrome.runtime.onStartup.addListener(() => {
+  queueSync();
+  badge();
+});
 chrome.permissions.onRemoved.addListener(queueSync);
 
 chrome.permissions.onAdded.addListener(async ({ origins }) => {

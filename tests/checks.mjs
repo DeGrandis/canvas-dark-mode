@@ -271,6 +271,74 @@ async function popupStates(context) {
   await page.close();
 }
 
+// The popup's on/off switch, on a listed school (#41).
+async function powerSwitch(context, html) {
+  const worker = await serviceWorker(context);
+  const id = new URL(worker.url()).hostname;
+  const setOff = (off) => worker.evaluate((value) => chrome.storage.local.set({ off: value }), off);
+  const badge = () => worker.evaluate(() => chrome.action.getBadgeText({}));
+  // Editors such as TinyMCE can rewrite their frame, which replaces its <html>.
+  const rewrittenFrame = (page) => page.evaluate(async () => {
+    const frame = document.createElement('iframe');
+    document.body.append(frame);
+    frame.contentDocument.open();
+    frame.contentDocument.write('<html><body><p>Draft</p></body></html>');
+    frame.contentDocument.close();
+    await new Promise((done) => setTimeout(done, 300));
+    return getComputedStyle(frame.contentDocument.body).backgroundColor;
+  });
+  const look = (page) => page.evaluate(() => ({
+    body: getComputedStyle(document.body).backgroundColor,
+    teacher: getComputedStyle(document.querySelector('#black-on-page span')).color,
+    editor: getComputedStyle(document.querySelector('#rce').contentDocument.body).backgroundColor,
+  }));
+
+  const popup = await context.newPage();
+  await popup.goto(`chrome-extension://${id}/popup.html`);
+  await popup.waitForTimeout(200);
+  check('popup switch starts on', await popup.locator('#power-switch').isChecked());
+  await popup.locator('#power-switch').click();
+  await popup.waitForTimeout(200);
+  check('turning the switch off is saved',
+    (await popup.evaluate(() => chrome.storage.local.get('off'))).off === true);
+  check('popup says it is off', (await popup.locator('#power-label').textContent()).includes('off'));
+  check('icon shows OFF', (await badge()) === 'OFF', await badge());
+  await popup.locator('#power-switch').click();
+  await popup.waitForTimeout(200);
+  check('turning the switch back on is saved',
+    (await popup.evaluate(() => chrome.storage.local.get('off'))).off === false);
+  check('icon badge clears', (await badge()) === '');
+  await popup.close();
+
+  const page = await openFixture(context, 'canvas.vt.edu', html);
+  await setOff(true);
+  await page.waitForTimeout(300);
+  let seen = await look(page);
+  check('switching off turns an open page light with no reload', !dark(seen.body), seen.body);
+  check('switching off undoes the contrast guard', dark(seen.teacher), seen.teacher);
+  check('switching off turns the editor light', !dark(seen.editor), seen.editor);
+  check('switching off leaves the draft untouched',
+    (await page.frameLocator('#rce').locator('#draft').getAttribute('style')) === null);
+
+  await setOff(false);
+  await page.waitForTimeout(1500);
+  seen = await look(page);
+  check('switching back on darkens the open page again', dark(seen.body) && dark(seen.editor));
+  check('switching back on runs the contrast guard again', !dark(seen.teacher), seen.teacher);
+  const on = await rewrittenFrame(page);
+  check('a rewritten editor frame is dark while on', dark(on), on);
+  await page.close();
+
+  await setOff(true);
+  const fresh = await openFixture(context, 'canvas.vt.edu', html);
+  seen = await look(fresh);
+  check('a page opened while off stays light', !dark(seen.body) && dark(seen.teacher), JSON.stringify(seen));
+  const written = await rewrittenFrame(fresh);
+  check('a rewritten editor frame stays light while off', !dark(written), written);
+  await fresh.close();
+  await setOff(false);
+}
+
 // Nothing here can answer the prompt, but the real API rejects at once if the manifest does
 // not cover the request, or if it was not made from a click.
 async function realRequest(context) {
@@ -362,7 +430,7 @@ try {
 
   // Anything beyond these would make every existing user re-approve the extension.
   check('permissions add no install warning',
-    (manifest.permissions ?? []).every((p) => ['activeTab', 'scripting'].includes(p)));
+    (manifest.permissions ?? []).every((p) => ['activeTab', 'scripting', 'storage'].includes(p)));
   check('access to all sites stays optional',
     !manifest.host_permissions && manifest.optional_host_permissions?.[0] === 'https://*/*');
   // The 201 schools in 1.1.6. New schools use Enable on this site instead.
@@ -375,6 +443,7 @@ try {
       !dark(await page.$eval('body', (el) => getComputedStyle(el).backgroundColor)));
     await page.close();
     await popupStates(context);
+    await powerSwitch(context, html);
     await customSiteGrant(html);
     await realRequest(context);
   } else {

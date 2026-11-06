@@ -12,6 +12,47 @@
         h3{
             color: white
         }
+        #power{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        #power-switch{
+            appearance: none;
+            position: relative;
+            width: 40px;
+            height: 22px;
+            margin: 0;
+            border-radius: 11px;
+            background-color: #4b4b4b;
+            cursor: pointer;
+        }
+        #power-switch::after{
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #C7CDD1;
+            transition: left 0.15s;
+        }
+        #power-switch:checked{
+            background-color: #2e7d32;
+        }
+        #power-switch:checked::after{
+            left: 21px;
+            background-color: #fff;
+        }
+        #power-switch:focus-visible{
+            outline: 2px solid aquamarine;
+            outline-offset: 2px;
+        }
         #site{
             padding: 12px;
             border: 1px solid #7b7b7b;
@@ -31,6 +72,11 @@
     </style>
 </head>
 <body>
+<label id="power">
+    <input type="checkbox" id="power-switch" role="switch" checked>
+    <span id="power-label">Dark mode is on</span>
+</label>
+
 <div id="site" hidden>
     <p id="site-status"></p>
     <p id="site-note"></p>
@@ -58,8 +104,8 @@
 </p>
 
 <h3><i>Why does this plugin disable itself when it updates?!  It's very annoying!</i></h3>
-<p>Chrome asks you to approve the plugin again whenever I add schools to its list, and it stays off until you do.
-    Schools turned on with <strong>Enable on this site</strong> do not need this, so it should rarely happen now.
+<p>Chrome asks you to approve the plugin again whenever schools are added to its list, and it stays off until you do.
+    Schools are no longer added, because anyone can use <strong>Enable on this site</strong>, so this should not happen again.
 </p>
 
 <h3><i>I am completely satisfied with this dark mode!</i></h3>

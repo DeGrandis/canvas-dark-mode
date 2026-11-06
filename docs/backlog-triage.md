@@ -84,8 +84,9 @@ reporter's own page was visited.
 - #206: not this extension. That school was not in the manifest, so it did not run there.
   That school can now use **Enable on this site**.
 
-**Feature requests, built:** #201 (**Enable on this site** in the popup)
+**Feature requests, built:** #201 (**Enable on this site** in the popup), #41 (on/off switch
+in the popup, which applies to open pages without a reload)
 
-**Feature requests, not built:** #41 (off switch), #43 (custom colours)
+**Feature requests, not built:** #43 (custom colours)
 
 **Not actionable:** #28 (closed, Firefox add-on exists), #216

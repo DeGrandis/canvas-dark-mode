@@ -1,4 +1,8 @@
-:root:root {
+/* Every rule is nested in this one, so the popup's switch can turn the theme off without a
+   reload by marking <html>. See js/switch.js. */
+html:not([data-dark-mode-off]) {
+
+&:root:root {
   /* A grey that holds 3:1 both ways, because Canvas uses these as a background
      under white text and also as text and icons on the page. */
   --ic-brand-primary: #707070;
@@ -95,7 +99,7 @@ a:where(:not([class*="-baseButton"])) {
     color: #C7CDD1 !important;
 }
 
-html {
+& {
     scrollbar-color: #4b4b4b #1f1f1f;
 }
 
@@ -329,4 +333,6 @@ button[class*="-view-link"], [class*="css-"][class*="-tray"] svg {
 
 :is(#tinymce, [contenteditable="true"]) :is([style*="color: #000"], [style*="color: rgb(0, 0, 0)"], [style*="color: black"]) {
     color: #C7CDD1 !important;
+}
+
 }

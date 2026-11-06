@@ -23,7 +23,7 @@
   "default_locale": "en",
   "minimum_chrome_version": "121",
 
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "optional_host_permissions": ["https://*/*"],
 
   "background": {
@@ -240,8 +240,10 @@
           "css/styles.css"
       ],
       "js":[
+          "js/switch.js",
           "js/contrast-guard.js"
       ],
+      "run_at": "document_start",
       "all_frames": true,
       "match_about_blank": true
     }
