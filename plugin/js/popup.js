@@ -8,6 +8,7 @@ const powerLabel = document.getElementById('power-label');
 // Open pages pick the change up through js/switch.js, with no reload.
 const showPower = () => {
   powerLabel.textContent = power.checked ? 'Dark mode is on' : 'Dark mode is off everywhere';
+  document.body.classList.toggle('off', !power.checked);
 };
 chrome.storage.local.get('off').then(({ off }) => {
   power.checked = !off;

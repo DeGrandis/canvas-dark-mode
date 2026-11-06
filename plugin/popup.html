@@ -1,35 +1,69 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <title>Document</title>
-    <style> 
+    <title>Canvas Dark Mode</title>
+    <style>
+        :root{
+            --bg: #1e1f22;
+            --surface: #2a2b2f;
+            --border: #3a3b40;
+            --text: #e3e5e8;
+            --muted: #a3a9b0;
+            --accent: #6fd6c0;
+            --accent-text: #10251f;
+        }
+        *{
+            box-sizing: border-box;
+        }
         body{
-            width: 550px;
-            background-color: #282828;
-            color: #C7CDD1;
+            width: 360px;
+            margin: 0;
+            padding: 16px;
+            background-color: var(--bg);
+            color: var(--text);
+            font: 13px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         }
-        h3{
-            color: white
+        a{
+            color: var(--accent);
         }
-        #power{
+        p{
+            margin: 0;
+        }
+
+        header{
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 16px;
-            color: #fff;
-            cursor: pointer;
+            gap: 12px;
         }
+        header img{
+            width: 32px;
+            height: 32px;
+        }
+        header div{
+            flex: 1;
+        }
+        h1{
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        #power-label{
+            color: var(--muted);
+        }
+
         #power-switch{
             appearance: none;
             position: relative;
+            flex: none;
             width: 40px;
             height: 22px;
             margin: 0;
             border-radius: 11px;
-            background-color: #4b4b4b;
+            background-color: #4a4b50;
             cursor: pointer;
+            transition: background-color 0.15s;
         }
         #power-switch::after{
             content: "";
@@ -39,43 +73,115 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background-color: #C7CDD1;
+            background-color: var(--text);
             transition: left 0.15s;
         }
         #power-switch:checked{
-            background-color: #2e7d32;
+            background-color: var(--accent);
         }
         #power-switch:checked::after{
             left: 21px;
             background-color: #fff;
         }
-        #power-switch:focus-visible{
-            outline: 2px solid aquamarine;
+        #power-switch:focus-visible, #site-action:focus-visible, summary:focus-visible{
+            outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
+
         #site{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 16px;
             padding: 12px;
-            border: 1px solid #7b7b7b;
-            border-radius: 4px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--surface);
         }
-        #site p{
-            margin: 0 0 8px 0;
+        /* The site still has its setting, but the switch overrides it. */
+        body.off #site{
+            opacity: 0.5;
+        }
+        #site[hidden], #site-action[hidden]{
+            display: none;
+        }
+        #site-note{
+            color: var(--muted);
+        }
+        #site-note:empty{
+            display: none;
         }
         #site-action{
-            padding: 6px 12px;
-            border: 1px solid #C7CDD1;
-            border-radius: 4px;
-            background-color: #4b4b4b;
-            color: #fff;
+            align-self: flex-start;
+            padding: 6px 14px;
+            border: 0;
+            border-radius: 6px;
+            background-color: var(--accent);
+            color: var(--accent-text);
+            font: inherit;
+            font-weight: 600;
             cursor: pointer;
+        }
+        #site-action:hover{
+            filter: brightness(1.1);
+        }
+
+        h2{
+            margin: 20px 0 6px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        details{
+            border-top: 1px solid var(--border);
+        }
+        details:last-of-type{
+            border-bottom: 1px solid var(--border);
+        }
+        summary{
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            font-weight: 500;
+            cursor: pointer;
+            list-style: none;
+        }
+        summary::-webkit-details-marker{
+            display: none;
+        }
+        summary::after{
+            content: "+";
+            color: var(--muted);
+        }
+        details[open] summary::after{
+            content: "\2212";
+        }
+        details p{
+            padding-bottom: 10px;
+            color: var(--muted);
+        }
+        details p + p{
+            margin-top: -4px;
+        }
+
+        footer{
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-<label id="power">
-    <input type="checkbox" id="power-switch" role="switch" checked>
-    <span id="power-label">Dark mode is on</span>
-</label>
+<header>
+    <img src="icons/icon48.png" alt="">
+    <div>
+        <h1>Canvas Dark Mode</h1>
+        <p id="power-label">Dark mode is on</p>
+    </div>
+    <input type="checkbox" id="power-switch" role="switch" aria-labelledby="power-label" checked>
+</header>
 
 <div id="site" hidden>
     <p id="site-status"></p>
@@ -83,38 +189,38 @@
     <button id="site-action" hidden></button>
 </div>
 
-<h1>Is Canvas Dark Mode Not Working?</h1>
+<h2>Not working?</h2>
 
-<h3><i>Canvas is still light mode!</i></h3>
-<p>After installing, try refreshing the canvas page.</p>
+<details>
+    <summary>Canvas is still light</summary>
+    <p>After installing, refresh the Canvas page. Check that the switch at the top is on.</p>
+</details>
 
-<h3><i>I refreshed and it's still not working!</i></h3>
-<p>Your school might not be on this plugin's list.  If you see <strong>Enable on this site</strong>
-    at the top of this window, click it.  You do not need to wait for an update.
-</p>
+<details>
+    <summary>I refreshed and it's still light</summary>
+    <p>Your school might not be on the list. If you see <strong>Enable on this site</strong> above,
+        click it. You do not need to wait for an update.</p>
+</details>
 
-<h3><i>You missed a spot! I see light!</i></h3>
-<p>Please include your school, details and screenshots in an issue report on <a style="color: aquamarine;" target="_blank"  href="https://github.com/DeGrandis/canvas-dark-mode/issues/new">github</a>
-</p>
+<details>
+    <summary>I see a light spot</summary>
+    <p>Please <a target="_blank" href="https://github.com/DeGrandis/canvas-dark-mode/issues/new">report it on GitHub</a>
+        with your school, what page it was on and a screenshot.</p>
+    <p>If you'd like to fix it yourself, pull requests are welcome. It's a great way for CS students
+        to contribute. See the <a target="_blank" href="https://github.com/DeGrandis/canvas-dark-mode">repo</a>.</p>
+</details>
 
-<p>If you would like to correct something that I missed, make a branch and submit a pull request.
-    This is a great and easy way for CS students to contribute!
-    <br>
-    You can see the repo <a style="color: aquamarine;" target="_blank" href="https://github.com/DeGrandis/canvas-dark-mode">here.</a>
-</p>
+<details>
+    <summary>Why did it turn itself off after an update?</summary>
+    <p>Chrome asks you to approve the extension again whenever schools are added to its list, and it
+        stays off until you do. Schools are no longer added, because anyone can use
+        <strong>Enable on this site</strong>, so this should not happen again.</p>
+</details>
 
-<h3><i>Why does this plugin disable itself when it updates?!  It's very annoying!</i></h3>
-<p>Chrome asks you to approve the plugin again whenever schools are added to its list, and it stays off until you do.
-    Schools are no longer added, because anyone can use <strong>Enable on this site</strong>, so this should not happen again.
-</p>
+<footer>
+    For anything else, email <a href="mailto:rtdegrandis@gmail.com">rtdegrandis@gmail.com</a>
+</footer>
 
-<h3><i>I am completely satisfied with this dark mode!</i></h3>
-<p>Thank you!  That's great to hear.
-</p>
-
-<p>For anything else or other inquiries, send me an email at
-    <strong style="color: rgb(255, 85, 85);">rtdegrandis@gmail.com</strong> </p>
 <script src="js/popup.js"></script>
 </body>
-
 </html>
